@@ -27,20 +27,20 @@ spec:
       datasources.yaml:
         apiVersion: 1
         deleteDatasources:
-          - name: Loki
-            orgId: 1
+          # - name: Loki
+          #   orgId: 1
           - name: Alertmanager
             orgId: 1
         datasources:
           - name: Prometheus
             type: prometheus
             access: proxy
-            url: http://thanos-query.monitoring.svc.cluster.local:9090
+            url: http://prometheus-prometheus.monitoring.svc.cluster.local:9090
             isDefault: true
-          - name: Loki
-            type: loki
-            access: proxy
-            url: http://loki.logging.svc.cluster.local:3100
+          # - name: Loki
+          #   type: loki
+          #   access: proxy
+          #   url: http://loki.logging.svc.cluster.local:3100
           - name: Alertmanager
             type: alertmanager
             access: proxy
