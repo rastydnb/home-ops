@@ -48,6 +48,9 @@ spec:
         hajimari.io/appName: "vector-aggregator"
         hajimari.io/enable: "true"
         hajimari.io/icon: "alarm-light-outline"
+        cert-manager.io/cluster-issuer: letsencrypt-staging
+        external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
+        external-dns.home.arpa/enabled: "true"
       hosts:
         - hosts: vector.ninjawombat.space
           paths:

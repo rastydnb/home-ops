@@ -36,6 +36,9 @@ spec:
         enabled: true
         ingressClassName: nginx
         annotations:
+          cert-manager.io/cluster-issuer: letsencrypt-staging
+          external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
+          external-dns.home.arpa/enabled: "true"
           hajimari.io/appName: "alertmanager"
           hajimari.io/enable: "true"
           hajimari.io/icon: "alarm-light-outline"
@@ -73,6 +76,9 @@ spec:
           hajimari.io/appName: "prometheus"
           hajimari.io/enable: "true"
           hajimari.io/icon: "chart-line"
+          cert-manager.io/cluster-issuer: letsencrypt-staging
+          external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
+          external-dns.home.arpa/enabled: "true"
         hosts:
           - prometheus.ninjawombat.space
         paths:
