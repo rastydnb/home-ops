@@ -81,13 +81,13 @@ spec:
         hajimari.io/enable: "true"
         hajimari.io/icon: "alarm-light-outline"
       hosts:
-        - grafana.devfu.io
+        - grafana.ninjawombat.space
       paths:
         - /
       pathType: ImplementationSpecific
       tls:
         - hosts:
-            - grafana.devfu.io
+            - grafana.ninjawombat.space
 
     persistence:
       enabled: false

@@ -1,3 +1,0 @@
-kind: Secret
-ansible_user: ubuntu
-ansible_become_pass: tukituki

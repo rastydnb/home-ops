@@ -48,7 +48,7 @@ spec:
         annotations:
           hajimari.io/icon: mdi:align-vertical-top
         hosts:
-          - host: &host goldilocks.devfu.io
+          - host: &host goldilocks.ninjawombat.space
             paths:
               - path: /
                 type: Prefix

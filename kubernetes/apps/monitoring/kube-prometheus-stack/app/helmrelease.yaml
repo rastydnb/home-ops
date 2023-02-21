@@ -40,13 +40,13 @@ spec:
           hajimari.io/enable: "true"
           hajimari.io/icon: "alarm-light-outline"
         hosts:
-          - alertmanager.devfu.io
+          - alertmanager.ninjawombat.space
         paths:
           - /
         pathType: ImplementationSpecific
         tls:
           - hosts:
-              - alertmanager.devfu.io
+              - alertmanager.ninjawombat.space
 
     grafana:
       enabled: false
@@ -74,13 +74,13 @@ spec:
           hajimari.io/enable: "true"
           hajimari.io/icon: "chart-line"
         hosts:
-          - prometheus.devfu.io
+          - prometheus.ninjawombat.space
         paths:
           - /
         pathType: ImplementationSpecific
         tls:
           - hosts:
-              - prometheus.devfu.io
+              - prometheus.ninjawombat.space
 
       resources:
         requests:

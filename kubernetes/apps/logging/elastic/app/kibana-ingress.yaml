@@ -13,7 +13,7 @@
  spec:
    ingressClassName: nginx
    rules:
-   - host: kibana.devfu.io
+   - host: kibana.ninjawombat.space
      http:
        paths:
        - backend:
@@ -25,5 +25,5 @@
          pathType: Prefix
    tls:
    - hosts:
-     - kibana.devfu.io
+     - kibana.ninjawombat.space
      secretName: kibana-tls
