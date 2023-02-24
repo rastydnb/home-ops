@@ -25,8 +25,6 @@ metadata:
   name: cluster-apps-cloudflare-tunnel-operator-tunnels
   namespace: flux-system
 spec:
-  dependsOn:
-    - name: cluster-apps-cloudflare-tunnel-operator
   path: ./kubernetes/apps/networking/cloudflare-tunnel-operator/tunnels
   prune: true
   sourceRef:
