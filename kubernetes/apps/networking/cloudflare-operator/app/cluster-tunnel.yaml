@@ -1,0 +1,16 @@
+---
+apiVersion: networking.cfargotunnel.com/v1alpha1
+kind: ClusterTunnel
+metadata:
+  name: cluster-tunnel
+  namespace: cloudflare-operator-system
+spec:
+  newTunnel:
+    name: homeops-cluster-tunnel
+  size: 2
+  cloudflare:
+    email: luisramos191@gmail.com
+    domain: ninjawombat.space
+    secret: cloudflare-operator-secret
+    accountName: "luisramos191"
+    accountId: 65fc053c46c2a1946d82b8bbe85dbcc8
