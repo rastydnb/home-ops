@@ -4,7 +4,6 @@ kind: Kustomization
 namespace: networking
 resources:
   - ./helmrelease.yaml
-  - ./test.sops.yaml
 configMapGenerator:
   - name: cloudflare-networks
     files:
