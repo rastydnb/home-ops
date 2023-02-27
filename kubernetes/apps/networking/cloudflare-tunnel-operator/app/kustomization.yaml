@@ -4,6 +4,6 @@ kind: Kustomization
 namespace: networking
 resources:
   - ./helmrelease.yaml
-  - ./cloudflare-tunnel-operator-secret.sops.yaml
+  - ./test.sops.yaml
 generatorOptions:
   disableNameSuffixHash: true
