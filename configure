@@ -70,9 +70,9 @@ main() {
         sops --encrypt --in-place "${PROJECT_DIR}/terraform/cloudflare/secret.sops.yaml"
 
 
-        envsubst < "${PROJECT_DIR}/tmpl/kubernetes/cloudflare-tunnel-operator-secret.sops.yaml" \
-            > "${PROJECT_DIR}/kubernetes/apps/networking/cloudflare-tunnel-operator/app/secret.sops.yaml"
-        sops --encrypt --in-place "${PROJECT_DIR}/kubernetes/apps/networking/cloudflare-tunnel-operator/app/secret.sops.yaml"
+        # envsubst < "${PROJECT_DIR}/tmpl/kubernetes/cloudflare-tunnel-operator-secret.sops.yaml" \
+        #     > "${PROJECT_DIR}/kubernetes/apps/networking/cloudflare-tunnel-operator/app/secret.sops.yaml"
+        # sops --encrypt --in-place "${PROJECT_DIR}/kubernetes/apps/networking/cloudflare-tunnel-operator/app/secret.sops.yaml"
 
         # generate ansible settings
         envsubst < "${PROJECT_DIR}/tmpl/ansible/kube-vip.yml" \
