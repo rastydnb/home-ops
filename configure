@@ -71,8 +71,8 @@ main() {
 
 
         envsubst < "${PROJECT_DIR}/tmpl/kubernetes/cloudflare-operator-secret.sops.yaml" \
-            > "${PROJECT_DIR}/kubernetes/apps/networking/cloudflare-operator/app/secret.sops.yaml"
-        sops --encrypt --in-place "${PROJECT_DIR}/kubernetes/apps/networking/cloudflare-operator/app/secret.sops.yaml"
+            > "${PROJECT_DIR}/kubernetes/apps/cloudflare-operator-system/cloudflare-operator/app/secret.sops.yaml"
+        sops --encrypt --in-place "${PROJECT_DIR}/kubernetes/apps/cloudflare-operator-system/cloudflare-operator/app/secret.sops.yaml"
 
         # generate ansible settings
         envsubst < "${PROJECT_DIR}/tmpl/ansible/kube-vip.yml" \
