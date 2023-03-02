@@ -36,6 +36,7 @@ spec:
       namespaceSelector:
         matchNames:
           - default
+          - monitoring
     ingress:
       main:
         enabled: true
