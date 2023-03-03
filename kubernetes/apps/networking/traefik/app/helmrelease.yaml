@@ -47,11 +47,11 @@ spec:
       dashboard:
         enabled: true
     persistence:
-      name: data
+      # name: data
       enabled: false
-      accessMode: ReadWriteMany
-      path: /data
-      existingClaim: pvc-networking
+      # accessMode: ReadWriteMany
+      # path: /data
+      # existingClaim: pvc-networking
     service:
       annotations:
         metallb.universe.tf/loadBalancerIPs: |-
