@@ -33,11 +33,6 @@ spec:
     deployment:
       enabled: true
       replicas: 1
-    experimental:
-      # http3:
-      #   enabled: true
-      plugins:
-        enabled: true
 
     ingressClass:
       enabled: true
