@@ -25,4 +25,5 @@ resources:
   - ./vector.yaml
   - ./external-secrets.yaml
   - ./1password.yaml
+  - ./traefik.yaml
   - ./beezlabs.yaml
