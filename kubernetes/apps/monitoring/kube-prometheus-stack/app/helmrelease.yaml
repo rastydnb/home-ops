@@ -52,6 +52,7 @@ spec:
         tls:
           - hosts:
               - alertmanager.ninjawombat.space
+            secretName: alertmanager.ninjawombat.space
 
     grafana:
       enabled: false
@@ -91,6 +92,7 @@ spec:
         tls:
           - hosts:
               - prometheus.ninjawombat.space
+            secretName: prometheus.ninjawombat.space
 
       resources:
         requests:
