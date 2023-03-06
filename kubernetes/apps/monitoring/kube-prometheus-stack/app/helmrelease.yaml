@@ -45,14 +45,14 @@ spec:
           hajimari.io/enable: "true"
           hajimari.io/icon: "alarm-light-outline"
         hosts:
-          - host: &host "alertmanager.${SECRET_DOMAIN}"
-            paths:
-              - path: /
-                pathType: Prefix
+          - alertmanager.ninjawombat.space
+        paths:
+          - /
+        pathType: ImplementationSpecific
         tls:
           - hosts:
-              - *host
-            secretName: *host
+              - alertmanager.ninjawombat.space
+
     grafana:
       enabled: false
       forceDeployDashboards: true
@@ -84,15 +84,13 @@ spec:
           external-dns.alpha.kubernetes.io/cloudflare-proxied: "false"
           traefik.ingress.kubernetes.io/router.entrypoints: websecure
         hosts:
-          - host: &host "prometheus.${SECRET_DOMAIN}"
-            paths:
-              - path: /
-                pathType: Prefix
+          - prometheus.ninjawombat.space
+        paths:
+          - /
+        pathType: ImplementationSpecific
         tls:
           - hosts:
-              - *host
-            secretName: *host
-
+              - prometheus.ninjawombat.space
 
       resources:
         requests:
