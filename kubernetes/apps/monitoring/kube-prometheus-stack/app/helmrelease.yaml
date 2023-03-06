@@ -34,23 +34,25 @@ spec:
       enabled: true
       ingress:
         enabled: true
-        ingressClassName: nginx
+        ingressClassName: traefik
         annotations:
-          cert-manager.io/cluster-issuer: letsencrypt-staging
-          external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
+          cert-manager.io/cluster-issuer: letsencrypt-production
+          external-dns.alpha.kubernetes.io/target: "${METALLB_INGRESS_ADDR}"
           external-dns.home.arpa/enabled: "true"
+          external-dns.alpha.kubernetes.io/cloudflare-proxied: "false"
+          traefik.ingress.kubernetes.io/router.entrypoints: websecure
           hajimari.io/appName: "alertmanager"
           hajimari.io/enable: "true"
           hajimari.io/icon: "alarm-light-outline"
         hosts:
-          - alertmanager.ninjawombat.space
-        paths:
-          - /
-        pathType: ImplementationSpecific
+          - host: &host "alertmanager.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
         tls:
           - hosts:
-              - alertmanager.ninjawombat.space
-
+              - *host
+            secretName: *host
     grafana:
       enabled: false
       forceDeployDashboards: true
@@ -71,22 +73,26 @@ spec:
 
       ingress:
         enabled: true
-        ingressClassName: nginx
+        ingressClassName: traefik
         annotations:
           hajimari.io/appName: "prometheus"
           hajimari.io/enable: "true"
           hajimari.io/icon: "chart-line"
-          cert-manager.io/cluster-issuer: letsencrypt-staging
-          external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
+          cert-manager.io/cluster-issuer: letsencrypt-production
+          external-dns.alpha.kubernetes.io/target: "${METALLB_INGRESS_ADDR}"
           external-dns.home.arpa/enabled: "true"
+          external-dns.alpha.kubernetes.io/cloudflare-proxied: "false"
+          traefik.ingress.kubernetes.io/router.entrypoints: websecure
         hosts:
-          - prometheus.ninjawombat.space
-        paths:
-          - /
-        pathType: ImplementationSpecific
+          - host: &host "prometheus.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
         tls:
           - hosts:
-              - prometheus.ninjawombat.space
+              - *host
+            secretName: *host
+
 
       resources:
         requests:
