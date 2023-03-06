@@ -5,8 +5,10 @@ metadata:
   name: traefik
   namespace: networking
   annotations:
+
+    external-dns.alpha.kubernetes.io/cloudflare-proxied: "false"
     external-dns.home.arpa/enabled: "true"
-    external-dns.alpha.kubernetes.io/target: "${SECRET_DOMAIN}"
+    external-dns.alpha.kubernetes.io/target: "192.168.2.174"
     external-dns.alpha.kubernetes.io/hostname: traefik.${SECRET_DOMAIN}
     cert-manager.io/cluster-issuer: letsencrypt-production
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
