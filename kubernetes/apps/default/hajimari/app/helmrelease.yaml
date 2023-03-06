@@ -50,6 +50,7 @@ spec:
           external-dns.alpha.kubernetes.io/target: "192.168.2.174"
           external-dns.home.arpa/enabled: "true"
           external-dns.alpha.kubernetes.io/cloudflare-proxied: "false"
+          traefik.ingress.kubernetes.io/router.entrypoints: websecure
         hosts:
           - host: &host "hajimari.${SECRET_DOMAIN}"
             paths:
