@@ -58,7 +58,7 @@ spec:
         tls:
           - hosts:
               - *host
-            secretName: hajimari-tls
+            secretName: *host
     podAnnotations:
       configmap.reloader.stakater.com/reload: hajimari-settings
     persistence:
