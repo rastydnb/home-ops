@@ -34,6 +34,7 @@ metadata:
 spec:
   entryPoints:
     - web
+    - websecure
   routes:
     - match: HostRegexp(`{any:.+}`)
       kind: Rule
