@@ -42,7 +42,7 @@ spec:
         - kind: TraefikService
           name: noop@internal
       middlewares:
-        - name: traefik-middleware-redirect-https
+        # - name: traefik-middleware-redirect-https
         - name: error-pages
 
 
