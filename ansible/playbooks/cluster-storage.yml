@@ -1,0 +1,28 @@
+---
+- hosts:
+    - master
+    - worker
+  become: true
+  gather_facts: true
+  any_errors_fatal: true
+  tasks:
+    - name: Install a list of packages
+      ansible.builtin.apt:
+        pkg:
+        - nfs-common
+        - jq
+    - name: enable services iscsid on boot
+      ansible.builtin.service:
+        name: "iscsid"
+        enabled: true
+        state: started
+
+    - name: Copy file multipath
+      ansible.builtin.copy:
+        src: templates/multipath.conf
+        dest: /etc/multipath.conf
+
+    - name: Restart multipathd
+      ansible.builtin.service:
+        name: multipathd.service
+        state: restarted
