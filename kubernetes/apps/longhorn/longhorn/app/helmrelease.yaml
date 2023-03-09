@@ -38,3 +38,11 @@ spec:
       ingressClassName: "nginx"
       tls: true
       host: "longhorn.ninjawombat.space"
+    longhornUI:
+      replicas: 1
+    longhornConversionWebhook:
+      replicas: 1
+    longhornAdmissionWebhook:
+      replicas: 1
+    longhornRecoveryBackend:
+      replicas: 1
