@@ -22,7 +22,8 @@ spec:
     - match: Host(`longhorn.ninjawombat.space`)
       kind: Rule
       services:
-        - name: api@internal
-          kind: TraefikService
+        - name: longhorn-frontend
+          kind: Service
+          port: 80
   tls:
     secretName: "longhorn-ninjawombat.space"
