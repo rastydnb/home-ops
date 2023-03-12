@@ -27,15 +27,15 @@ metadata:
   namespace: testing-longhorn
 spec:
   containers:
-  - name: longhorn-test
-    image: nginx:stable-alpine
-    imagePullPolicy: IfNotPresent
-    volumeMounts:
+    - name: longhorn-test
+      image: nginx:stable-alpine
+      imagePullPolicy: IfNotPresent
+      volumeMounts:
+      - name: longhorn-pvc
+        mountPath: /data
+      ports:
+      - containerPort: 80
+    volumes:
     - name: longhorn-pvc
-      mountPath: /data
-    ports:
-    - containerPort: 80
-  volumes:
-  - name: longhorn-pvc
-    persistentVolumeClaim:
-      claimName: longhorn-pvc
+      persistentVolumeClaim:
+        claimName: longhorn-pvc
