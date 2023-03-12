@@ -1,14 +1,11 @@
----
 apiVersion: v1
-kind: PersistentVolume
+kind: PersistentVolumeClaim
 metadata:
-  name: kube-nfs-pv
+  name: longhorn-volv-pvc
 spec:
-  storageClassName: storage-nfs
-  capacity:
-    storage: 10Gi
   accessModes:
-    - ReadWriteMany
-  nfs:
-    server: 192.168.2.51
-    path: "/mnt/usbshare1"
+  - ReadWriteOnce
+  storageClassName: longhorn
+  resources:
+    requests:
+      storage: 2Gi

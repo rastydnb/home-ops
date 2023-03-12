@@ -41,8 +41,10 @@
 
     - name: Mount an NFS volume
       ansible.posix.mount:
-        src: 192.168.2.51:/mnt/usbshare1
+        src: 192.168.2.51:/mnt/usb/usbshare1
         path: /mnt/k8s_data
         opts: rw,sync,hard
         state: mounted
         fstype: nfs
+
+
