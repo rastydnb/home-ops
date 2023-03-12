@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: traefik
+  name: traefik-vol-pvc
   namespace: networking
 spec:
   accessModes:
