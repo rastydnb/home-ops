@@ -1,4 +1,3 @@
----
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
@@ -18,10 +17,10 @@ spec:
         namespace: flux-system
   interval: 5m
   dependsOn:
-    - name: metallb
-      namespace: networking
-    - name: cert-manager
-      namespace: cert-manager
+  - name: metallb
+    namespace: networking
+  - name: cert-manager
+    namespace: cert-manager
   install:
     createNamespace: true
     remediation:
@@ -43,7 +42,7 @@ spec:
         enabled: true
     persistence:
       # name: data
-      enabled: false
+      enabled: true
       # accessMode: ReadWriteMany
       # path: /data
       # existingClaim: pvc-networking
@@ -68,9 +67,9 @@ spec:
           enabled: true
           options: "default"
           domains:
-            - main: "${SECRET_DOMAIN}"
-              sans:
-                - "*.${SECRET_DOMAIN}"
+          - main: "${SECRET_DOMAIN}"
+            sans:
+            - "*.${SECRET_DOMAIN}"
           stores: networking-default@kubernetescrd
     providers:
       kubernetesCRD:
@@ -85,34 +84,34 @@ spec:
         publishedService:
           enabled: false
     globalArguments:
-      - --entryPoints.web.address=:80/tcp
-      - --entryPoints.websecure.address=:443/tcp
-      - --entryPoints.web.forwardedHeaders.insecure
-      - --entryPoints.websecure.forwardedHeaders.insecure
-      - --api=true
-      - --api.dashboard=true #required for the dashboard
-      #- --api.insecure=true #only used in combination with api.dashboard=true. not recommended  https://doc.traefik.io/traefik/operations/dashboard/#insecure-mode
-      - --ping=true
-      - --providers.kubernetescrd
-      - --providers.kubernetescrd.allowCrossNamespace=true
-      # - --providers.kubernetesingress.ingressclass=traefik
-      - --metrics.prometheus=true
-      - --metrics.prometheus.entryPoint=metrics
+    - --entryPoints.web.address=:80/tcp
+    - --entryPoints.websecure.address=:443/tcp
+    - --entryPoints.web.forwardedHeaders.insecure
+    - --entryPoints.websecure.forwardedHeaders.insecure
+    - --api=true
+    - --api.dashboard=true #required for the dashboard
+    #- --api.insecure=true #only used in combination with api.dashboard=true. not recommended  https://doc.traefik.io/traefik/operations/dashboard/#insecure-mode
+    - --ping=true
+    - --providers.kubernetescrd
+    - --providers.kubernetescrd.allowCrossNamespace=true
+    # - --providers.kubernetesingress.ingressclass=traefik
+    - --metrics.prometheus=true
+    - --metrics.prometheus.entryPoint=metrics
     additionalArguments:
-      - --log.level=DEBUG
-      - --log.filePath=/data/traefik/logs/traefik.log
-      - --accessLog=true
-      - --accesslog.filepath=/data/traefik/logs/access.log
-      - --accesslog.fields.defaultmode=keep
-      - --accesslog.fields.headers.defaultmode=keep
-      - --accesslog.fields.headers.names.X-Forwarded-User=keep
-      - --providers.kubernetescrd
-      - --providers.kubernetesingress.ingressendpoint.ip=${TRAEFIK_SERVICE_ADDR}"
-      #- "--providers.kubernetesingress.ingressendpoint.hostname=${SECRET_DOMAIN}"
-      - --serverstransport.insecureskipverify=true
-      - --providers.kubernetesingress.ingressclass=traefik
-      - --providers.kubernetesingress.allowexternalnameservices=true
-      - --providers.kubernetescrd.allowexternalnameservices=true
+    - --log.level=DEBUG
+    - --log.filePath=/data/traefik/logs/traefik.log
+    - --accessLog=true
+    - --accesslog.filepath=/data/traefik/logs/access.log
+    - --accesslog.fields.defaultmode=keep
+    - --accesslog.fields.headers.defaultmode=keep
+    - --accesslog.fields.headers.names.X-Forwarded-User=keep
+    - --providers.kubernetescrd
+    - --providers.kubernetesingress.ingressendpoint.ip=${TRAEFIK_SERVICE_ADDR}"
+    #- "--providers.kubernetesingress.ingressendpoint.hostname=${SECRET_DOMAIN}"
+    - --serverstransport.insecureskipverify=true
+    - --providers.kubernetesingress.ingressclass=traefik
+    - --providers.kubernetesingress.allowexternalnameservices=true
+    - --providers.kubernetescrd.allowexternalnameservices=true
     tlsOptions:
       default:
         # cipherSuites:
@@ -133,7 +132,7 @@ spec:
       limits:
         cpu: 4000m
         memory: 500Mi
-  # tlsStore:
+        # tlsStore:
     #   default:
     #     defaultCertificate:
     #       secretName: ${SECRET_DOMAIN}-prod-tls
