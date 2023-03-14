@@ -28,9 +28,9 @@ spec:
 
   values:
     persistence:
-      defaultClassReplicaCount: 2
+      defaultClassReplicaCount: 3
     defaultSettings:
-      defaultReplicaCount: 2
+      defaultReplicaCount: 3
       backupTarget: nfs://192.168.2.51:/mnt/usb/usbshare1/backup
     pspEnable: false
     ingress:
