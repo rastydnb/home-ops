@@ -42,7 +42,7 @@ spec:
         enabled: true
     persistence:
       name: data
-      enabled: true
+      enabled: false
       # accessMode: ReadWriteMany
       path: /data
       existingClaim: traefik-vol-pvc
