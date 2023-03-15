@@ -44,7 +44,7 @@ spec:
       name: data
       enabled: true
       storageClass: longhorn
-      accessMode: ReadWriteMany
+      # accessMode: ReadWriteMany
       path: /data
     service:
       annotations:
