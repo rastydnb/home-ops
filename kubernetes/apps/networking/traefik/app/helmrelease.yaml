@@ -44,9 +44,7 @@ spec:
       name: data
       enabled: true
       storageClass: longhorn
-      # accessMode: ReadWriteMany
       path: /data
-      # existingClaim: traefik-vol-pvc
     service:
       annotations:
         metallb.universe.tf/loadBalancerIPs: |-
