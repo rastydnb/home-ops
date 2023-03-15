@@ -31,7 +31,7 @@ spec:
   values:
     deployment:
       enabled: true
-      replicas: 1
+      replicas: 2
 
     ingressClass:
       enabled: true
@@ -41,11 +41,7 @@ spec:
       dashboard:
         enabled: true
     persistence:
-      name: data
-      enabled: true
-      # storageClass: longhorn
-      # accessMode: ReadWriteMany
-      path: /data
+      enabled: false
       existingClaim: traefik-vol-pvc
     service:
       annotations:
