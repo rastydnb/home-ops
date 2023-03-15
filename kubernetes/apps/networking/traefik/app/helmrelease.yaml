@@ -41,7 +41,7 @@ spec:
       dashboard:
         enabled: true
     persistence:
-      enabled: false
+      enabled: true
       existingClaim: traefik-vol-pvc
     service:
       annotations:
