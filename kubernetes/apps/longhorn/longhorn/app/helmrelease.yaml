@@ -31,7 +31,7 @@ spec:
       defaultClassReplicaCount: 3
     defaultSettings:
       defaultReplicaCount: 3
-      backupTarget: nfs://192.168.2.51:/mnt/usb/usbshare1/backup
+      backupTarget: nfs://192.168.2.51:/mnt/md0/appdata/longhorn_backup
     pspEnable: false
     ingress:
       enabled: true
