@@ -1,4 +1,3 @@
----
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
@@ -45,14 +44,14 @@ spec:
           hajimari.io/enable: "true"
           hajimari.io/icon: "alarm-light-outline"
         hosts:
-          - alertmanager.ninjawombat.space
+        - alertmanager.ninjawombat.space
         paths:
-          - /
+        - /
         pathType: ImplementationSpecific
         tls:
-          - hosts:
-              - alertmanager.ninjawombat.space
-            secretName: alertmanager.ninjawombat.space
+        - hosts:
+          - alertmanager.ninjawombat.space
+          secretName: alertmanager.ninjawombat.space
 
     grafana:
       enabled: false
@@ -85,14 +84,14 @@ spec:
           external-dns.alpha.kubernetes.io/cloudflare-proxied: "false"
           traefik.ingress.kubernetes.io/router.entrypoints: websecure
         hosts:
-          - prometheus.ninjawombat.space
+        - prometheus.ninjawombat.space
         paths:
-          - /
+        - /
         pathType: ImplementationSpecific
         tls:
-          - hosts:
-              - prometheus.ninjawombat.space
-            secretName: prometheus.ninjawombat.space
+        - hosts:
+          - prometheus.ninjawombat.space
+          secretName: prometheus.ninjawombat.space
 
       resources:
         requests:
@@ -108,7 +107,8 @@ spec:
         enabled: false
 
       prometheusSpec:
-        scrapeInterval: 60s
+        scrapeInterval: 120s
+        retention: 5d
         #remoteWrite:
         #  - url: "https://prometheus-prod-01-eu-west-0.grafana.net/api/prom/push"
         #    basicAuth:
@@ -154,13 +154,13 @@ spec:
             memory: 32M
 
     nodeExporter:
-       enabled: true
-       serviceMonitor:
-         relabelings:
-           - action: replace
-             regex: (.*)
-             replacement: $1
-             sourceLabels:
-               - __meta_kubernetes_pod_node_name
-             targetLabel: kubernetes_node
+      enabled: true
+      serviceMonitor:
+        relabelings:
+        - action: replace
+          regex: (.*)
+          replacement: $1
+          sourceLabels:
+          - __meta_kubernetes_pod_node_name
+          targetLabel: kubernetes_node
 
