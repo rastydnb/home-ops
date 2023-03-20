@@ -53,7 +53,7 @@ spec:
     longhornRecoveryBackend:
       replicas: 1
     csi:
-      attacherReplicaCount: 3
-      provisionerReplicaCount: 3
-      resizerReplicaCount: 3
-      snapshotterReplicaCount: 3
+      attacherReplicaCount: 1
+      provisionerReplicaCount: 1
+      resizerReplicaCount: 1
+      snapshotterReplicaCount: 1

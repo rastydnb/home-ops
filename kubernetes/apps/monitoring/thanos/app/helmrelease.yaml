@@ -1,4 +1,3 @@
----
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
@@ -27,18 +26,18 @@ spec:
       retries: 5
 
   dependsOn:
-    - name: kube-prometheus-stack
-      namespace: monitoring
-    - name: ingress-nginx
-      namespace: networking
-#    - name: rook-ceph
-#      namespace: rook-ceph
+  - name: kube-prometheus-stack
+    namespace: monitoring
+  - name: traefik
+    namespace: networking
+    #    - name: rook-ceph
+    #      namespace: rook-ceph
 
   values:
     query:
       enabled: true
       replicaLabels:
-        - replica
+      - replica
       dnsDiscovery:
         sidecarsService: prometheus-thanos-discovery
         sidecarsNamespace: monitoring
