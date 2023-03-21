@@ -36,6 +36,10 @@
     #   file:
     #     path: /mnt/k8s_data/{{inventory_hostname}}
     #     state: directory
+    - name: Delete  directory /var/lib/longhorn/
+      file:
+        state: absent
+        path: /var/lib/longhorn
 
 
 
