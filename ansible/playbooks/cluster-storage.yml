@@ -27,26 +27,27 @@
         name: multipathd.service
         state: restarted
 
-    # - name: Creates directory /mnt/k8s_data
+    # - name: Creates directory /var/lib/longhorn
     #   file:
-    #     path: /mnt/k8s_data
+    #     path: /var/lib/longhorn
     #     state: directory
 
     # - name: Creates directory /mnt/k8s_data/hostname
     #   file:
     #     path: /mnt/k8s_data/{{inventory_hostname}}
     #     state: directory
-    - name: Delete  directory /var/lib/longhorn/
-      file:
-        state: absent
-        path: /var/lib/longhorn
+
+    # - name: Delete  directory /var/lib/longhorn/
+    #   file:
+    #     state: absent
+    #     path: /var/lib/longhorn
 
 
 
     # - name: Mount an NFS volume
     #   ansible.posix.mount:
     #     src: 192.168.2.51:/mnt/usb/usbshare1
-    #     path: /mnt/k8s_data
+    #     path: /var/lib/longhorn
     #     opts: rw,sync,hard
     #     state: mounted
     #     fstype: nfs
