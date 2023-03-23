@@ -26,3 +26,6 @@ spec:
       server: 192.168.2.51
       path: /mnt/md0/appdata/k8s_data
 
+    storageClass:
+      create: true
+      accessModes: ReadWriteMany

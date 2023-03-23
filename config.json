@@ -1,0 +1,9 @@
+{
+    "defaultLocale": "en",
+    "hostname": null,
+    "port": null,
+    "instancesDB": "moonraker",
+    "instances": [
+        { "hostname": "moonraker", "port": 7125 }
+    ]
+}
