@@ -27,3 +27,4 @@ resources:
 - ./traefik.yaml
 - ./beezlabs.yaml
 - ./nfs-subdir-external-provisioner.yaml
+- ./node-feature-discovery.yaml
