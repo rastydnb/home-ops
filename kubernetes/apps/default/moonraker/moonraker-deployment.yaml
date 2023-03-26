@@ -1,0 +1,82 @@
+# Source: mainsail/templates/moonraker-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: moonraker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: moonraker
+      app.kubernetes.io/instance: mainsail
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: moonraker
+        app.kubernetes.io/instance: mainsail
+    spec:
+      securityContext: {}
+      containers:
+      - name: moonraker
+        securityContext:
+          capabilities:
+            add:
+            - SYS_NICE
+          privileged: true
+        image: "mkuf/moonraker:latest"
+        imagePullPolicy: IfNotPresent
+        ports:
+        - name: http
+          containerPort: 7125
+          protocol: TCP
+        livenessProbe:
+          httpGet:
+            path: /
+            port: http
+        readinessProbe:
+          httpGet:
+            path: /
+            port: http
+        resources: {}
+        volumeMounts:
+        - mountPath: /home/klippy/gcode_files
+          name: gcode-files
+        - mountPath: /home/klippy/.config
+          name: klipper-claim1
+        - mountPath: /home/klippy/.moonraker_database
+          name: moonraker-data
+        - mountPath: /dev/serial/by-id/usb-Klipper_lpc1769_1CC00008A49869AF90E93E5EC12000F5-if00
+          name: dev-3dprinter
+      - name: klipper
+        securityContext:
+          capabilities:
+            add:
+            - SYS_NICE
+          privileged: true
+        image: "mkuf/moonraker:latest"
+        imagePullPolicy: IfNotPresent
+        resources: {}
+        volumeMounts:
+        - mountPath: /home/klippy/gcode_files
+          name: gcode-files
+        - mountPath: /home/klippy/.config
+          name: klipper-claim1
+        - mountPath: /home/klippy/.moonraker_database
+          name: moonraker-data
+        - mountPath: /dev/serial/by-id/usb-Klipper_lpc1769_1CC00008A49869AF90E93E5EC12000F5-if00
+          name: dev-3dprinter
+      nodeSelector:
+        kubernetes.io/hostname: slave2
+      volumes:
+      - name: gcode-files
+        persistentVolumeClaim:
+          claimName: gcode-files
+      - name: klipper-claim1
+        persistentVolumeClaim:
+          claimName: klipper-claim1
+      - name: moonraker-data
+        persistentVolumeClaim:
+          claimName: moonraker-data
+      - name: dev-3dprinter
+        hostPath:
+          path: /dev/serial/by-id/usb-Klipper_lpc1769_1CC00008A49869AF90E93E5EC12000F5-if00

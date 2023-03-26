@@ -1,0 +1,12 @@
+# Source: mainsail/templates/klipper-claim1-persistentvolumeclaim.yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: klipper-claim1
+spec:
+  accessModes:
+  - ReadWriteMany
+  storageClassName: nfs-client
+  resources:
+    requests:
+      storage: 100Mi

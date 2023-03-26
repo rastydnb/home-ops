@@ -1,0 +1,46 @@
+# Source: mainsail/templates/mainsail-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mainsail
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: mainsail
+      app.kubernetes.io/instance: mainsail
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: mainsail
+        app.kubernetes.io/instance: mainsail
+    spec:
+      securityContext: {}
+
+      volumes:
+      - name: mainsail-config
+        configMap:
+          name: mainsail-config
+      containers:
+      - name: mainsail
+        securityContext: {}
+        image: "ghcr.io/mainsail-crew/mainsail:latest"
+        imagePullPolicy: IfNotPresent
+        volumeMounts:
+        - name: mainsail-config
+          mountPath: /usr/share/nginx/html/config.json
+          subPath: config.json
+        ports:
+        - name: http
+          containerPort: 80
+          protocol: TCP
+        livenessProbe:
+          httpGet:
+            path: /
+            port: http
+        readinessProbe:
+          httpGet:
+            path: /
+            port: http
+        resources: {}

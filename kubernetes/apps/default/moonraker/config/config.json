@@ -1,0 +1,6 @@
+{
+    "instancesDB": "browser",
+    "instances": [
+        { "hostname": "moonraker.ninjawombat.space", "port": 80 }
+    ]
+}

@@ -1,4 +1,3 @@
----
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -18,19 +17,19 @@ metadata:
 spec:
   ingressClassName: "traefik"
   tls:
-    - hosts:
-        - &host "traefik.${SECRET_DOMAIN}"
-      secretName: *host
+  - hosts:
+    - &host "traefik.${SECRET_DOMAIN}"
+    secretName: *host
   rules:
-    - host: *host
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: traefik
-              #- name: api@internal
-                #kind: TraefikService
-                port:
-                  number: 8080
+  - host: *host
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: traefik
+            #- name: api@internal
+            #kind: TraefikService
+            port:
+              number: 8080
