@@ -19,6 +19,4 @@ configMapGenerator:
 - name: moonraker-config
   files:
   - config/moonraker.conf
-- name: printer-config
-  files:
   - config/printer.cfg

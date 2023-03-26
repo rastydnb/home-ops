@@ -45,6 +45,9 @@ spec:
           name: gcode-files
         - mountPath: /dev/serial/by-id/usb-Klipper_lpc1769_1CC00008A49869AF90E93E5EC12000F5-if00
           name: dev-3dprinter
+        - name: printer-config
+          mountPath: /opt/printer_data/config/printer.cfg
+          subPath: printer.cfg
         - name: moonraker-config
           mountPath: /opt/printer_data/config/moonraker.conf
           subPath: moonraker.conf
@@ -65,6 +68,9 @@ spec:
         - name: printer-config
           mountPath: /opt/printer_data/config/printer.cfg
           subPath: printer.cfg
+        - name: moonraker-config
+          mountPath: /opt/printer_data/config/moonraker.conf
+          subPath: moonraker.conf
         - mountPath: /dev/serial/by-id/usb-Klipper_lpc1769_1CC00008A49869AF90E93E5EC12000F5-if00
           name: dev-3dprinter
       nodeSelector:
