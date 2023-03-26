@@ -39,14 +39,15 @@ spec:
             port: http
         resources: {}
         volumeMounts:
-        - mountPath: /home/klippy/gcode_files
+        - mountPath: /opt/printer_data/run
+          name: socket
+        - mountPath: /opt/printer_data/gcodes
           name: gcode-files
-        - mountPath: /home/klippy/.config
-          name: klipper-claim1
-        - mountPath: /home/klippy/.moonraker_database
-          name: moonraker-data
         - mountPath: /dev/serial/by-id/usb-Klipper_lpc1769_1CC00008A49869AF90E93E5EC12000F5-if00
           name: dev-3dprinter
+        - name: moonraker-config
+          mountPath: /opt/printer_data/config/moonraker.conf
+          subPath: moonraker.conf
       - name: klipper
         securityContext:
           capabilities:
@@ -57,26 +58,29 @@ spec:
         imagePullPolicy: IfNotPresent
         resources: {}
         volumeMounts:
-        - mountPath: /home/klippy/gcode_files
+        - mountPath: /opt/printer_data/run
+          name: socket
+        - mountPath: /opt/printer_data/gcodes
           name: gcode-files
-        - mountPath: /home/klippy/.config
-          name: klipper-claim1
-        - mountPath: /home/klippy/.moonraker_database
-          name: moonraker-data
+        - name: printer-config
+          mountPath: /opt/printer_data/config/printer.cfg
+          subPath: printer.cfg
         - mountPath: /dev/serial/by-id/usb-Klipper_lpc1769_1CC00008A49869AF90E93E5EC12000F5-if00
           name: dev-3dprinter
       nodeSelector:
         kubernetes.io/hostname: slave2
       volumes:
+      - name: printer-config
+        configMap:
+          name: printer-config
+      - name: moonraker-config
+        configMap:
+          name: moonraker-config
+      - name: socket
+        emptyDir: {}
       - name: gcode-files
         persistentVolumeClaim:
           claimName: gcode-files
-      - name: klipper-claim1
-        persistentVolumeClaim:
-          claimName: klipper-claim1
-      - name: moonraker-data
-        persistentVolumeClaim:
-          claimName: moonraker-data
       - name: dev-3dprinter
         hostPath:
           path: /dev/serial/by-id/usb-Klipper_lpc1769_1CC00008A49869AF90E93E5EC12000F5-if00
