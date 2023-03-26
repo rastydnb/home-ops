@@ -10,7 +10,7 @@ resources:
 # - ./moonraker-service.yaml
 - ./mainsail-ingress.yaml
 # - ./moonraker-ingress.yaml
-
+namespace: default
 
 configMapGenerator:
 - name: mainsail-config
