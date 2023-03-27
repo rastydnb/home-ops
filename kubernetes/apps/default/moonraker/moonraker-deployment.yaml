@@ -50,6 +50,7 @@ spec:
           name: socket
         - mountPath: /opt/klipper
           name: klipper
+          subPath: klipper
         - mountPath: /opt/printer_data/gcodes
           name: gcode-files
         - mountPath: /dev/serial/by-id/usb-Klipper_lpc1769_1CC00008A49869AF90E93E5EC12000F5-if00
