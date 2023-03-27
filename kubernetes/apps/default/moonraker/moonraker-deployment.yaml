@@ -22,7 +22,7 @@ spec:
         volumeMounts:
         - name: klipper
           mountPath: /data
-        command: [cp, -a, /opt/klipper, /data]
+        command: [cp, -a, /opt/klipper/, /data]
       containers:
       - name: moonraker
         securityContext:
