@@ -16,6 +16,13 @@ spec:
         app.kubernetes.io/instance: mainsail
     spec:
       securityContext: {}
+      initContainers:
+      - name: populate
+        image: mkuf/klipper:latest
+        volumeMounts:
+        - name: klipper
+          mountPath: /data
+        command: [cp, -a, /opt/klipper, /data]
       containers:
       - name: moonraker
         securityContext:
@@ -41,8 +48,8 @@ spec:
         volumeMounts:
         - mountPath: /opt/printer_data/run
           name: socket
-        - mountPath: /opt/printer_data/mainsail-config
-          name: mainsail-config
+        - mountPath: /opt/klipper
+          name: klipper
         - mountPath: /opt/printer_data/gcodes
           name: gcode-files
         - mountPath: /dev/serial/by-id/usb-Klipper_lpc1769_1CC00008A49869AF90E93E5EC12000F5-if00
@@ -86,7 +93,7 @@ spec:
           name: moonraker-config
       - name: socket
         emptyDir: {}
-      - name: mainsail-config
+      - name: klipper
         emptyDir: {}
       - name: gcode-files
         persistentVolumeClaim:
