@@ -59,7 +59,7 @@ spec:
             add:
             - SYS_NICE
           privileged: true
-        image: "mkuf/moonraker:latest"
+        image: "mkuf/klipper:latest"
         imagePullPolicy: IfNotPresent
         resources: {}
         volumeMounts:
