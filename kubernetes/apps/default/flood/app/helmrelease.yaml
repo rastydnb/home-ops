@@ -89,6 +89,10 @@ spec:
         value: "1001"
       - name: PGID
         value: "1001"
+      securityContext:
+        fsGroup: 1001
+        runAsUser: 1001
+        runAsGroup: 1001
       livenessProbe:
         failureThreshold: 3
         periodSeconds: 10
