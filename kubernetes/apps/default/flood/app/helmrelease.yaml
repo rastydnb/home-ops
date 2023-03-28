@@ -40,6 +40,7 @@ spec:
         tls:
         - hosts:
           - "flood.ninjawombat.space"
+          secretName: flood.ninjawombat.space
 
     persistence:
       data:
@@ -148,7 +149,6 @@ spec:
         type: LoadBalancer
         annotations:
           metallb.universe.tf/loadBalancerIPs: 192.168.2.175
-
         externalTrafficPolicy: Local
         ports:
           bt:
