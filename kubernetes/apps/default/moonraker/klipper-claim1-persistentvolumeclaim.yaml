@@ -5,7 +5,7 @@ metadata:
   name: klipper-claim1
 spec:
   accessModes:
-  - ReadWriteMany
+  - ReadWriteOnce
   storageClassName: nfs-client
   resources:
     requests:
