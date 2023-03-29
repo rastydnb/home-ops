@@ -17,6 +17,9 @@ spec:
         io.kompose.network/flood-default: "true"
         io.kompose.service: flood
     spec:
+      securityContext:
+        runAsUser: 1001
+        runAsGroup: 1001
       containers:
       - args:
         - --port
