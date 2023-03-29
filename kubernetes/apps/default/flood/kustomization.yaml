@@ -1,0 +1,12 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ./flood-claim1-persistentvolumeclaim.yaml
+- ./flood-ingress.yaml
+- ./rtorrent-service.yaml
+- ./download-claim0-persistentvolumeclaim.yaml
+- ./flood-deployment.yaml
+- ./flood-service.yaml
+- ./rtorrent-deployment.yaml
+namespace: default
+

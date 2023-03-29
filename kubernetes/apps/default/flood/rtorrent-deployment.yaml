@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    io.kompose.service: rtorrent
+  name: rtorrent
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: rtorrent
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        io.kompose.network/flood-default: "true"
+        io.kompose.service: rtorrent
+    spec:
+      containers:
+      - args:
+        - -o
+        - network.port_range.set=6881-6881,system.daemon.set=true
+        env:
+        - name: HOME
+          value: /config
+        image: jesec/rtorrent
+        name: rtorrent
+        ports:
+        - containerPort: 6881
+        resources: {}
+        volumeMounts:
+        - mountPath: /config
+          name: flood-claim1
+        - mountPath: /data
+          name: download-claim0
+      restartPolicy: Always
+      volumes:
+      - name: rtorrent-claim0
+        persistentVolumeClaim:
+          claimName: rtorrent-claim0
+      - name: rtorrent-claim1
+        persistentVolumeClaim:
+          claimName: rtorrent-claim1
+status: {}

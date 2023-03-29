@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    io.kompose.service: flood
+  name: flood
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: flood
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        io.kompose.network/flood-default: "true"
+        io.kompose.service: flood
+    spec:
+      containers:
+      - args:
+        - --port
+        - "3001"
+        - --allowedpath
+        - /data
+        env:
+        - name: HOME
+          value: /config
+        image: jesec/flood
+        name: flood
+        ports:
+        - containerPort: 3001
+        resources: {}
+        volumeMounts:
+        - mountPath: /config
+          name: flood-claim1
+        - mountPath: /data
+          name: download-claim0
+      restartPolicy: Always
+      volumes:
+      - name: flood-claim0
+        persistentVolumeClaim:
+          claimName: flood-claim0
+      - name: flood-claim1
+        persistentVolumeClaim:
+          claimName: flood-claim1
+status: {}
