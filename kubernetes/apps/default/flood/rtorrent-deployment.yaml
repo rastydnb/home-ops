@@ -17,6 +17,10 @@ spec:
         io.kompose.network/flood-default: "true"
         io.kompose.service: rtorrent
     spec:
+      securityContext:
+        runAsUser: 1001
+        runAsGroup: 1001
+        fsGroup: 1001
       containers:
       - args:
         - -o
