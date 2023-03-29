@@ -8,5 +8,6 @@ resources:
 - ./flood-deployment.yaml
 - ./flood-service.yaml
 - ./rtorrent-deployment.yaml
+
 namespace: default
 
