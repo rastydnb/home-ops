@@ -36,10 +36,10 @@ spec:
           name: download-claim0
       restartPolicy: Always
       volumes:
-      - name: rtorrent-claim0
+      - name: download-claim0
         persistentVolumeClaim:
-          claimName: rtorrent-claim0
-      - name: rtorrent-claim1
+          claimName: download-claim0
+      - name: flood-claim1
         persistentVolumeClaim:
-          claimName: rtorrent-claim1
+          claimName: flood-claim1
 status: {}
