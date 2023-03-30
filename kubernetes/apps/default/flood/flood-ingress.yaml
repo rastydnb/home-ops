@@ -25,4 +25,4 @@ spec:
           service:
             name: flood
             port:
-              number: 7125
+              number: 3001
