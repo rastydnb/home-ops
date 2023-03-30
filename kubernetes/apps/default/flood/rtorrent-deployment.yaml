@@ -47,3 +47,4 @@ spec:
         persistentVolumeClaim:
           claimName: flood-claim1
 status: {}
+# /config/.local/share/rtorrent/download/
