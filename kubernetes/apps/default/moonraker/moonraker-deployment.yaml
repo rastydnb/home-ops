@@ -15,7 +15,11 @@ spec:
         app.kubernetes.io/name: moonraker
         app.kubernetes.io/instance: mainsail
     spec:
-      securityContext: {}
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        privileged: true
       initContainers:
       - name: populate
         image: mkuf/klipper:latest
