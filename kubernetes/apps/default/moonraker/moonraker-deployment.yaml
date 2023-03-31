@@ -26,9 +26,6 @@ spec:
       containers:
       - name: moonraker
         securityContext:
-          capabilities:
-            add:
-            - SYS_NICE
           privileged: true
         image: "mkuf/moonraker:latest"
         imagePullPolicy: IfNotPresent
@@ -63,9 +60,6 @@ spec:
           subPath: moonraker.conf
       - name: klipper
         securityContext:
-          capabilities:
-            add:
-            - SYS_NICE
           privileged: true
         image: "mkuf/klipper:latest"
         imagePullPolicy: IfNotPresent
