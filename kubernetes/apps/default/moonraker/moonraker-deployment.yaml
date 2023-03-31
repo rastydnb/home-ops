@@ -26,9 +26,9 @@ spec:
       containers:
       - name: moonraker
         securityContext:
-          runAsUser: 1001
-          runAsGroup: 1001
-          fsGroup: 1001
+          runAsUser: 1000
+          runAsGroup: 1000
+          fsGroup: 1000
           privileged: true
         image: "mkuf/moonraker:latest"
         imagePullPolicy: IfNotPresent
@@ -63,9 +63,9 @@ spec:
           subPath: moonraker.conf
       - name: klipper
         securityContext:
-          runAsUser: 1001
-          runAsGroup: 1001
-          fsGroup: 1001
+          runAsUser: 1000
+          runAsGroup: 1000
+          fsGroup: 1000
           privileged: true
         image: "mkuf/klipper:latest"
         imagePullPolicy: IfNotPresent
