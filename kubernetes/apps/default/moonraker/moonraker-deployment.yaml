@@ -50,6 +50,8 @@ spec:
             port: http
         resources: {}
         volumeMounts:
+        - mountPath: /opt/octoeverywhere
+          name: octoeverywhere
         - mountPath: /opt/printer_data/run
           name: socket
         - mountPath: /opt/klipper
@@ -100,9 +102,13 @@ spec:
         emptyDir: {}
       - name: klipper
         emptyDir: {}
+      - name: octoeverywhere
+        emptyDir: {}
       - name: gcode-files
         persistentVolumeClaim:
           claimName: gcode-files
       - name: dev-3dprinter
         hostPath:
           path: /dev/serial/by-id/usb-Klipper_lpc1769_1CC00008A49869AF90E93E5EC12000F5-if00
+
+
