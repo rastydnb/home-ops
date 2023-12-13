@@ -12,8 +12,6 @@ resources:
 - ./prometheus-community.yaml
 - ./weave-gitops.yaml
 - ./grafana.yaml
-- ./descheduler.yaml
-- ./botkube.yaml
 - ./external-secrets.yaml
 - ./traefik.yaml
 - ./beezlabs.yaml
