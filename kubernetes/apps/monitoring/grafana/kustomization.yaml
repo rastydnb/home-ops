@@ -5,7 +5,7 @@ namespace: monitoring
 
 resources:
 - ./helmrelease.yaml
-- ./tunnelbinding.yaml
+# - ./tunnelbinding.yaml
 #  - dashboards
 #  - datasources
 #  - deploy.yml
