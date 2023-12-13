@@ -1,5 +1,4 @@
----
-apiVersion: source.toolkit.fluxcd.io/v1b
+apiVersion: source.toolkit.fluxcd.io/v1beta1b
 kind: HelmRepository
 metadata:
   name: timescale
