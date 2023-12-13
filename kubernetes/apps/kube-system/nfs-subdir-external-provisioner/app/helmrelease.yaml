@@ -24,7 +24,7 @@ spec:
   values:
     nfs:
       server: 192.168.2.51
-      path: /mnt/md0/appdata/k8s_data
+      path: /mnt/md0/appdata
 
     storageClass:
       create: true
