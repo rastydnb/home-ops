@@ -27,9 +27,7 @@ tasks:
   remove:
     desc: remove Flux into your cluster
     cmds:
-    - kubectl delete --kustomize {{.KUBERNETES_DIR}}/flux/config
-    - kubectl delete --kustomize {{.KUBERNETES_DIR}}/bootstrap
-    - sleep 10s
+    - flux uninstall
 
   reconcile:
     desc: Force update Flux to pull in changes from your Git repository
