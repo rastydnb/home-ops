@@ -30,7 +30,7 @@ spec:
     fullnameOverride: prometheus
 
     alertmanager:
-      enabled: true
+      enabled: false
       ingress:
         enabled: true
         ingressClassName: traefik
