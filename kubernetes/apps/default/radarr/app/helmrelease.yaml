@@ -97,12 +97,8 @@ spec:
       media:
         enabled: true
         existingClaim: movies-pvc
-        advancedMounts:
-          main:
-            main:
-            - path: /movies
-              # globalMounts:
-              # - path: /movies
+        globalMounts:
+        - path: /movies
           # subPath: pelis
       downloads:
         enabled: true
