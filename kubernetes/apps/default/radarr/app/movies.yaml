@@ -23,6 +23,6 @@ spec:
   resources:
     requests:
       storage: 4000Gi
-  selector:
-    matchLabels:
-      app: radarr
+  # selector:
+  #   matchLabels:
+  #     app: radarr
