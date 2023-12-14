@@ -83,7 +83,7 @@ spec:
       main:
         ports:
           http:
-            port: &port 80
+            port: *port
       bittorrent:
         controller: main
         type: LoadBalancer
@@ -114,16 +114,16 @@ spec:
             service:
               name: main
               port: http
-        # - host: &customHost qb.ninjawombat.space
-        #   paths:
-        #   - path: /
-        #     service:
-        #       name: main
-        #       port: http
+        - host: &customHost qb.ninjawombat.space
+          paths:
+          - path: /
+            service:
+              name: main
+              port: http
         tls:
         - hosts:
           - *host
-          # - *customHost
+          - *customHost
           secretName: *host
     persistence:
       config:
