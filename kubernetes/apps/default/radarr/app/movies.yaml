@@ -18,11 +18,9 @@ kind: PersistentVolumeClaim
 metadata:
   name: movies-pvc
 spec:
+  storageClassName: nfs-client
   accessModes:
   - ReadWriteMany
   resources:
     requests:
       storage: 4000Gi
-  # selector:
-  #   matchLabels:
-  #     app: radarr
