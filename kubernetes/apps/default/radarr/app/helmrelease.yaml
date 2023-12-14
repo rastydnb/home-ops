@@ -98,8 +98,8 @@ spec:
         enabled: true
         existingClaim: movies-pvc
         globalMounts:
-        - path: /pelis
-          subPath: pelis
+        - path: /movies
+          # subPath: pelis
       downloads:
         enabled: true
         existingClaim: download-claim
