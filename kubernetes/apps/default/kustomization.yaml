@@ -4,5 +4,6 @@ resources:
 - ./namespace.yaml
 # - ./echo-server/ks.yaml
 - ./hajimari/ks.yaml
+- ./qbittorrent/ks.yaml
 # - ./flood
 # - ./moonraker
