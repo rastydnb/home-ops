@@ -104,9 +104,9 @@ spec:
               # globalMounts:
               # - path: /movies
           # subPath: pelis
-      downloads:
-        enabled: true
-        existingClaim: download-claim
-        globalMounts:
-        - path: /downloads/movies
-          subPath: movies
+      # downloads:
+      #   enabled: true
+      #   existingClaim: download-claim
+      #   globalMounts:
+      #   - path: /downloads/movies
+      #     subPath: movies
