@@ -83,7 +83,7 @@ spec:
       main:
         ports:
           http:
-            port: *port
+            port: &port 80
       bittorrent:
         controller: main
         type: LoadBalancer
