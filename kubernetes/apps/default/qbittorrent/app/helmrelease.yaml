@@ -43,7 +43,7 @@ spec:
               QBT_Preferences__WebUI__AlternativeUIEnabled: false
               QBT_Preferences__WebUI__AuthSubnetWhitelistEnabled: true
               QBT_Preferences__WebUI__AuthSubnetWhitelist: |-
-                10.32.0.0/16, 192.168.42.0/24
+                10.43.0.0/16, 192.168.42.0/24
               QBT_Preferences__WebUI__LocalHostAuth: false
               QBT_BitTorrent__Session__Interface: eth0
               QBT_BitTorrent__Session__InterfaceAddress:
@@ -132,8 +132,3 @@ spec:
           main:
             main:
             - path: /downloads/movies
-        # type: nfs
-        # server: expanse.turbo.ac
-        # path: /eros/Media
-        # globalMounts:
-        # - path: /media
