@@ -80,18 +80,18 @@ spec:
             fsGroupChangePolicy: OnRootMismatch
             supplementalGroups: [10000]
     service:
-      main:
+      bittorrent:
         ports:
           http:
             port: *port
-      bittorrent:
-        controller: main
-        type: LoadBalancer
-        ports:
-          bittorrent:
-            enabled: true
-            port: *bittorrentPort
-            protocol: TCP
+            # bittorrent:
+            #   controller: main
+            #   type: LoadBalancer
+            #   ports:
+            #     bittorrent:
+            #       enabled: true
+            #       port: *bittorrentPort
+            #       protocol: TCP
     ingress:
       main:
         enabled: true
@@ -110,7 +110,7 @@ spec:
           paths:
           - path: /
             service:
-              name: main
+              name: bittorrent
               port: http
         # - host: &customHost qb.ninjawombat.space
         #   paths:
