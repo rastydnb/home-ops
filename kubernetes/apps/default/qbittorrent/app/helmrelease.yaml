@@ -138,3 +138,6 @@ spec:
           main:
             main:
             - path: /downloads/movies
+              subPath: movies
+              readOnly: false
+
