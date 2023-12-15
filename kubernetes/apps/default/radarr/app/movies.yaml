@@ -4,7 +4,7 @@ metadata:
   name: movies-pv
 spec:
   capacity:
-    storage: 3000Gi
+    storage: 2500Gi
   accessModes:
   - ReadWriteMany
   nfs:
@@ -22,4 +22,4 @@ spec:
   - ReadWriteMany
   resources:
     requests:
-      storage: 3000Gi
+      storage: 2500Gi
