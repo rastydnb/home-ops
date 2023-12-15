@@ -4,4 +4,4 @@ kind: Kustomization
 resources:
 - ./helmrelease.yaml
 - ./config-claim.yaml
-- ./series.yaml
+# - ./series.yaml

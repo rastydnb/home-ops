@@ -99,7 +99,7 @@ spec:
             - path: /config
       media:
         enabled: true
-        existingClaim: series-pvc
+        existingClaim: movies-pvc
         readOnly: false
         globalMounts:
         - path: /series
