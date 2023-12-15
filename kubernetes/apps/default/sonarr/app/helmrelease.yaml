@@ -26,6 +26,8 @@ spec:
   dependsOn:
   - name: qbittorrent
     namespace: default
+  - name: radarr
+    namespace: default
   values:
     controllers:
       main:
