@@ -141,7 +141,7 @@ spec:
         - path: /scripts/completed.sh
           subPath: completed.sh
           readOnly: true
-      movies:
+      media:
         enabled: true
         existingClaim: download-claim
         advancedMounts:
@@ -150,13 +150,6 @@ spec:
             - path: /downloads/movies
               subPath: movies
               readOnly: false
-      series:
-        enabled: true
-        existingClaim: download-claim
-        advancedMounts:
-          main:
-            main:
             - path: /downloads/series
               subPath: series
               readOnly: false
-
