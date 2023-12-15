@@ -105,6 +105,7 @@ spec:
         readOnly: false
         globalMounts:
         - path: /series
+          subPath: series
       downloads:
         enabled: true
         existingClaim: download-claim
