@@ -20,7 +20,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-  - name: cert-manager
+  - name: media-volume
   targetNamespace: default
   commonMetadata:
     labels:
