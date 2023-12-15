@@ -95,7 +95,7 @@ spec:
             main:
             - path: /config
       media:
-        enabled: false
+        enabled: true
         existingClaim: movies-pvc
         globalMounts:
         - path: /movies
