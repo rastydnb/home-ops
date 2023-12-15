@@ -10,7 +10,7 @@ spec:
   - ReadWriteMany
   nfs:
     server: 192.168.2.51
-    path: /mnt/md0/Video/pelis
+    path: /mnt/md0/Video
 ---
 
 apiVersion: v1

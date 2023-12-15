@@ -100,6 +100,7 @@ spec:
         readOnly: false
         globalMounts:
         - path: /movies
+          subPath: pelis
       downloads:
         enabled: true
         existingClaim: download-claim
