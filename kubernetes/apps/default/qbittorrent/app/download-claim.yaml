@@ -8,5 +8,5 @@ spec:
   storageClassName: nfs-client
   resources:
     requests:
-      storage: 500Gi
+      storage: 300Gi
 status: {}
