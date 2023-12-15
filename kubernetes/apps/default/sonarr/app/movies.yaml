@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: movies-pv
+spec:
+  storageClassName: nfs-client
+  capacity:
+    storage: 2500Gi
+  accessModes:
+  - ReadWriteMany
+  nfs:
+    server: 192.168.2.51
+    path: /mnt/md0/Video/pelis
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: movies-pvc
+spec:
+  storageClassName: nfs-client
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 2500Gi
