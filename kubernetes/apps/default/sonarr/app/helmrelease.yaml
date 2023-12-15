@@ -58,15 +58,14 @@ spec:
             - sh
             - -c
             args:
-              - chown -R 568:568 /tv;
-                chown -R 568:568 /downloads
+            - chown -R 568:568 /tv; chown -R 568:568 /downloads
             securityContext:
               runAsUser: 0
     service:
       main:
         ports:
           http:
-            port: 7878
+            port: 8989
     ingress:
       main:
         enabled: true
