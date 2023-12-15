@@ -97,11 +97,13 @@ spec:
       media:
         enabled: true
         existingClaim: movies-pvc
+        readOnly: false
         globalMounts:
         - path: /movies
       downloads:
         enabled: true
         existingClaim: download-claim
+        readOnly: false
         globalMounts:
         - path: /downloads/movies
           subPath: movies
