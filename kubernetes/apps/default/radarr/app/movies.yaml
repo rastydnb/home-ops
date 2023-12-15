@@ -3,6 +3,7 @@ kind: PersistentVolume
 metadata:
   name: movies-pv
 spec:
+  storageClassName: nfs-client
   capacity:
     storage: 2500Gi
   accessModes:
