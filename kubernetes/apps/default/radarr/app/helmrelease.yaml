@@ -95,13 +95,13 @@ spec:
             main:
             - path: /config
       media:
-        enabled: true
+        enabled: false
         existingClaim: movies-pvc
         globalMounts:
         - path: /movies
-      # downloads:
-      #   enabled: true
-      #   existingClaim: download-claim
-      #   globalMounts:
-      #   - path: /downloads/movies
-      #     subPath: movies
+      downloads:
+        enabled: true
+        existingClaim: download-claim
+        globalMounts:
+        - path: /downloads/movies
+          subPath: movies
