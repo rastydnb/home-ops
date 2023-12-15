@@ -132,7 +132,7 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: config-claim
+        existingClaim: qbittorrent-config-claim
       completed-script:
         type: configMap
         name: qbittorrent-scripts
