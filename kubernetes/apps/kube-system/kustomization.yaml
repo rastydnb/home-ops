@@ -3,7 +3,7 @@ kind: Kustomization
 resources:
 - ./namespace.yaml
 - ./kube-vip/ks.yaml
-# - ./nfs-subdir-external-provisioner/ks.yaml
+- ./nfs-subdir-external-provisioner/ks.yaml
 # - ./node-feature-discovery/ks.yaml
 #  - ./metrics-server/ks.yaml
 #  - ./reloader/ks.yaml
