@@ -136,7 +136,8 @@ spec:
         advancedMounts:
           main:
             main:
-            - subPath: qbittorrent
+            - path: /config
+              subPath: qbittorrent
               readOnly: false
       completed-script:
         type: configMap
