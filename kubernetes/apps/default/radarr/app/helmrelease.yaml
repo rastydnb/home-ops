@@ -75,7 +75,6 @@ spec:
           external-dns.alpha.kubernetes.io/target: "${METALLB_INGRESS_ADDR}"
           cert-manager.io/cluster-issuer: letsencrypt-production
           traefik.ingress.kubernetes.io/router.entrypoints: websecure
-          hajimari.io/appName: "traefik"
           hajimari.io/enable: "true"
         hosts:
         - host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
