@@ -132,7 +132,12 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: qbittorrent-config-claim
+        existingClaim: data-pv
+        advancedMounts:
+          main:
+            main:
+            - subPath: qbittorrent
+              readOnly: false
       completed-script:
         type: configMap
         name: qbittorrent-scripts
@@ -148,8 +153,8 @@ spec:
           main:
             main:
             - path: /downloads/movies
-              subPath: movies
+              subPath: /downloads/movies
               readOnly: false
             - path: /downloads/series
-              subPath: series
+              subPath: /downloads/series
               readOnly: false
