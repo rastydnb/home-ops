@@ -72,13 +72,13 @@ spec:
         annotations:
           external-dns.alpha.kubernetes.io/cloudflare-proxied: "false"
           external-dns.home.arpa/enabled: "true"
-          external-dns.alpha.kubernetes.io/target: 192.168.2.174
+          external-dns.alpha.kubernetes.io/target: "${METALLB_INGRESS_ADDR}"
           cert-manager.io/cluster-issuer: letsencrypt-production
           traefik.ingress.kubernetes.io/router.entrypoints: websecure
           hajimari.io/appName: "traefik"
           hajimari.io/enable: "true"
         hosts:
-        - host: &host "{{ .Release.Name }}.ninjawombat.space"
+        - host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
           paths:
           - path: /
             pathType: Prefix
