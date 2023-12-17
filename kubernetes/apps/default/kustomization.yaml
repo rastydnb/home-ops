@@ -4,6 +4,6 @@ resources:
 - ./namespace.yaml
 - ./hajimari/ks.yaml
 - ./qbittorrent/ks.yaml
-- ./radarr/ks.yaml
-- ./sonarr/ks.yaml
+# - ./radarr/ks.yaml
+# - ./sonarr/ks.yaml
 
