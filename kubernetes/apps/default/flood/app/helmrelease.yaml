@@ -15,12 +15,6 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
-    image:
-      repository: truecharts/flood
-      tag: 5.0.12
-    env:
-      FLOOD_OPTION_RUNDIR: /data
-
     ingress:
       main:
         enabled: true
