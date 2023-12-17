@@ -9,15 +9,34 @@ spec:
     namespace: default
   chart:
     spec:
-      # renovate: registryUrl=https://k8s-at-home.com/charts/
-      chart: jackett
-      version: 11.7.2
+      chart: app-template
+      version: "1.5.1"
       sourceRef:
         kind: HelmRepository
-        name: k8s-at-home-charts
+        name: bjw-s
         namespace: flux-system
       interval: 5m
   values:
+    image:
+      repository: linuxserver/jackett
+      tag: 0.21.1264
+
+    controller:
+      replicas: 1 # active nas
+
+    env:
+      TZ: "Europe/Madrid"
+      PUID: "568"
+      PGID: "568"
+
+    service:
+      main:
+        enabled: true
+        type: ClusterIP
+        ports:
+          http:
+            port: 9117
+            targetPort: 9117
     ingress:
       dashboard:
         enabled: true
@@ -55,7 +74,3 @@ spec:
         readOnly: false
         globalMounts:
         - path: /mnt/media
-    env:
-      TZ: "Europe/Madrid"
-      XDG_CONFIG_HOME: /config
-      XDG_DATA_HOME: /mnt/media/jackett/data
