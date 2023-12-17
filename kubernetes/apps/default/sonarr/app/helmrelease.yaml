@@ -108,10 +108,12 @@ spec:
         globalMounts:
         - path: /tv
           subPath: series
-      downloads:
-        enabled: true
-        existingClaim: media-pvc
-        readOnly: false
-        globalMounts:
         - path: /downloads/series
           subPath: series
+      # downloads:
+      #   enabled: true
+      #   existingClaim: media-pvc
+      #   readOnly: false
+      #   globalMounts:
+      #   - path: /downloads/series
+      #     subPath: series
