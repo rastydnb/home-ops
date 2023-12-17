@@ -106,10 +106,12 @@ spec:
         globalMounts:
         - path: /movies
           subPath: pelis
-      downloads:
-        enabled: true
-        existingClaim: media-pvc
-        readOnly: false
-        globalMounts:
         - path: /downloads/movies
           subPath: movies
+      # downloads:
+      #   enabled: true
+      #   existingClaim: media-pvc
+      #   readOnly: false
+      #   globalMounts:
+      #   - path: /downloads/movies
+      #     subPath: movies
