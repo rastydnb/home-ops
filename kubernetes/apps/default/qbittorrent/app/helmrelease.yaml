@@ -132,7 +132,7 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: media-pv
+        existingClaim: data-pv
         advancedMounts:
           main:
             main:
