@@ -1,45 +1,74 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/helmrelease-helm-v2beta1.json
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: flood
+  name: &app flood
   namespace: default
 spec:
-  interval: 5m
+  interval: 30m
   chart:
     spec:
-      chart: flood
-      version: 5.0.12
+      chart: app-template
+      version: 2.4.0
       sourceRef:
         kind: HelmRepository
-        name: truecharts
+        name: bjw-s
         namespace: flux-system
-      interval: 5m
+  maxHistory: 2
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
   values:
-    ingress:
+    defaultPodOptions:
+      securityContext:
+        runAsUser: 1001
+        runAsGroup: 1001
+        fsGroup: 1001
+        fsGroupChangePolicy: "OnRootMismatch"
+    controllers:
       main:
-        enabled: true
+        type: statefulset
         annotations:
-          cert-manager.io/cluster-issuer: letsencrypt-production
-          external-dns.alpha.kubernetes.io/cloudflare-proxied: "false"
-          external-dns.alpha.kubernetes.io/target: "${METALLB_INGRESS_ADDR}"
-          external-dns.home.arpa/enabled: "true"
-          traefik.ingress.kubernetes.io/router.entrypoints: websecure
-        hosts:
-        - host: &host "flood.${SECRET_DOMAIN}"
-          paths:
-          - path: /
-            pathType: Prefix
-        tls:
-        - hosts:
-          - *host
-          secretName: *host
-
+          reloader.stakater.com/auto: "true"
+        containers:
+          main:
+            image:
+              repository: jesec/flood
+              tag: master@sha256:1df5b049fac3811f356d1f4ff98ee9b63ee43342aa1e24c937ae00e7d38175fb
+            env:
+              FLOOD_OPTION_RUNDIR: /data
+              FLOOD_OPTION_AUTH: "none"
+              FLOOD_OPTION_QBURL: "http://qbittorrent.default.svc.cluster.local.:80"
+              FLOOD_OPTION_QBUSER: test
+              FLOOD_OPTION_QBPASS: test
+            resources:
+              requests:
+                memory: 250Mi
+                cpu: 15m
+              limits:
+                memory: 512Mi
+                # statefulset:
+                #   volumeClaimTemplates:
+                #   - name: config
+                #     accessMode: ReadWriteOnce
+                #     size: 50Gi
+                #     storageClass: rook-ceph-block
+                #     globalMounts:
+                #     - path: /data
+    service:
+      main:
+        ports:
+          http:
+            port: 3000
     persistence:
-      # data:
-      #   enabled: true
-      #   existingClaim: nfs-media-downloads-pvc
-
-      data:
+      config:
         enabled: true
         existingClaim: data-pvc
         advancedMounts:
@@ -48,27 +77,27 @@ spec:
             - path: /data
               subPath: flood
               readOnly: false
-
-    probes:
-      liveness:
+    ingress:
+      main:
         enabled: true
-        initialDelaySeconds: 30
-        failureThreshold: 5
-        timeoutSeconds: 10
-      readiness:
-        enabled: true
-        initialDelaySeconds: 30
-        failureThreshold: 5
-        timeoutSeconds: 10
-      startup:
-        enabled: true
-        initialDelaySeconds: 5
-        failureThreshold: 30
-        periodSeconds: 10
-
-    resources:
-      requests:
-        memory: 50Mi
-        cpu: 50m
-      limits:
-        memory: 640Mi
+        primary: true
+        className: traefik
+        annotations:
+          external-dns.alpha.kubernetes.io/cloudflare-proxied: "false"
+          external-dns.home.arpa/enabled: "true"
+          external-dns.alpha.kubernetes.io/target: "${METALLB_INGRESS_ADDR}"
+          cert-manager.io/cluster-issuer: letsencrypt-production
+          traefik.ingress.kubernetes.io/router.entrypoints: websecure
+          hajimari.io/enable: "true"
+        hosts:
+        - host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
+          paths:
+          - path: /
+            pathType: Prefix
+            service:
+              name: main
+              port: http
+        tls:
+        - hosts:
+          - *host
+          secretName: *host
