@@ -4,6 +4,9 @@ metadata:
   name: jackett
 spec:
   interval: 5m
+  dependsOn:
+  - name: qbittorrent
+    namespace: default
   chart:
     spec:
       # renovate: registryUrl=https://k8s-at-home.com/charts/
