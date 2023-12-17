@@ -4,6 +4,8 @@ kind: Kustomization
 metadata:
   name: &app sonarr
   namespace: flux-system
+  labels:
+    substitution.flux.home.arpa/enabled: "true"
 spec:
   targetNamespace: default
   commonMetadata:
