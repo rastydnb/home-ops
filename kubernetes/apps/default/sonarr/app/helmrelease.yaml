@@ -94,21 +94,23 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: sonarr-config
+        existingClaim: data-pvc
         advancedMounts:
           main:
             main:
             - path: /config
+              subPath: sonarr
+              readOnly: false
       media:
         enabled: true
-        existingClaim: movies-pvc
+        existingClaim: media-pvc
         readOnly: false
         globalMounts:
         - path: /tv
           subPath: series
       downloads:
         enabled: true
-        existingClaim: download-claim
+        existingClaim: media-pvc
         readOnly: false
         globalMounts:
         - path: /downloads/series

@@ -92,21 +92,23 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: radarr-config
+        existingClaim: data-pvc
         advancedMounts:
           main:
             main:
             - path: /config
+              subPath: radarr
+              readOnly: false
       media:
         enabled: true
-        existingClaim: movies-pvc
+        existingClaim: media-pvc
         readOnly: false
         globalMounts:
         - path: /movies
           subPath: pelis
       downloads:
         enabled: true
-        existingClaim: download-claim
+        existingClaim: media-pvc
         readOnly: false
         globalMounts:
         - path: /downloads/movies
