@@ -5,7 +5,7 @@ metadata:
 spec:
   storageClassName: nfs-client
   capacity:
-    storage: 3400Gi
+    storage: 2500Gi
   accessModes:
   - ReadWriteMany
   nfs:
@@ -24,4 +24,4 @@ spec:
   - ReadWriteMany
   resources:
     requests:
-      storage: 3400Gi
+      storage: 2500Gi
