@@ -5,5 +5,5 @@ resources:
 - ./hajimari/ks.yaml
 - ./qbittorrent/ks.yaml
 - ./radarr/ks.yaml
-- ./sonarr/ks.yaml
+# - ./sonarr/ks.yaml
 
