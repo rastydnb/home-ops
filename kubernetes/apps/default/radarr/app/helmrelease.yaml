@@ -106,4 +106,4 @@ spec:
         - path: /movies
           subPath: pelis
         - path: /downloads/movies
-          subPath: movies
+          subPath: downloads/movies
