@@ -35,20 +35,20 @@ spec:
     controllers:
       main:
         type: statefulset
-        pod:
-          securityContext:
-            runAsUser: 568
-            runAsGroup: 568
-            fsGroup: 568
-            fsGroupChangePolicy: OnRootMismatch
+        # pod:
+        #   securityContext:
+        #     runAsUser: 568
+        #     runAsGroup: 568
+        #     fsGroup: 568
+        #     fsGroupChangePolicy: OnRootMismatch
         containers:
           main:
             image:
               repository: rogerfar/rdtclient
               tag: latest
             env:
-              PUID: 568
-              GUID: 568
+              PUID: "568"
+              PGID: "568"
               TZ: "Europe/Madrid"
             resources:
               requests:
