@@ -37,9 +37,9 @@ spec:
         type: statefulset
         pod:
           securityContext:
-            runAsUser: 1000
-            runAsGroup: 1000
-            fsGroup: 1000
+            runAsUser: 568
+            runAsGroup: 568
+            # fsGroup: 568
         #     runAsNonRoot: true
         # fsGroupChangePolicy: OnRootMismatch
         containers:
@@ -48,8 +48,8 @@ spec:
               repository: rogerfar/rdtclient
               tag: latest
             env:
-              PUID: 1000
-              GUID: 1000
+              PUID: 568
+              GUID: 568
               TZ: "Europe/Madrid"
             resources:
               requests:
