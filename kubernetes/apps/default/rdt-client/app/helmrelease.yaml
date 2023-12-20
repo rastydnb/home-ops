@@ -27,11 +27,11 @@ spec:
   - name: qbittorrent
     namespace: default
   values:
-    defaultPodOptions:
-      dnsConfig:
-        options:
-        - name: ndots
-          value: "1"
+    # defaultPodOptions:
+    #   dnsConfig:
+    #     options:
+    #     - name: ndots
+    #       value: "1"
     controllers:
       main:
         type: statefulset
