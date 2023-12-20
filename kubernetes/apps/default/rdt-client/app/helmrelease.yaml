@@ -40,7 +40,8 @@ spec:
             runAsUser: 911
             runAsGroup: 1001
             fsGroup: 1001
-            fsGroupChangePolicy: OnRootMismatch
+            runAsNonRoot: true
+            # fsGroupChangePolicy: OnRootMismatch
         containers:
           main:
             image:
