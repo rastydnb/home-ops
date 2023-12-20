@@ -35,13 +35,13 @@ spec:
     controllers:
       main:
         type: statefulset
-        pod:
-          securityContext:
-            runAsUser: 911
-            runAsGroup: 1001
-            fsGroup: 1001
-            runAsNonRoot: true
-            # fsGroupChangePolicy: OnRootMismatch
+        # pod:
+        #   securityContext:
+        #     runAsUser: 911
+        #     runAsGroup: 1001
+        #     fsGroup: 1001
+        #     runAsNonRoot: true
+        # fsGroupChangePolicy: OnRootMismatch
         containers:
           main:
             image:
