@@ -27,22 +27,26 @@ spec:
   - name: qbittorrent
     namespace: default
   values:
-    controller:
-      type: statefulset
-    image:
-      repository: rogerfar/rdtclient
-      tag: 2.0.49
-
-    # podAnnotations:
-    #   vpn.home.arpa/enabled: "true"
-
-    # dnsConfig:
-    #   options:
-    #   - name: ndots
-    #     value: "1"
-
-    hostname: rdt
-
+    controllers:
+      main:
+        type: statefulset
+        pod:
+          securityContext:
+            runAsUser: 568
+            runAsGroup: 568
+            fsGroup: 568
+            fsGroupChangePolicy: OnRootMismatch
+        containers:
+          main:
+            image:
+              repository: rogerfar/rdtclient
+              tag: latest
+            resources:
+              requests:
+                cpu: 15m
+                memory: 500Mi
+              limits:
+                memory: 2Gi
     service:
       main:
         ports:
