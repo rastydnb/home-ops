@@ -37,9 +37,9 @@ spec:
         type: statefulset
         pod:
           securityContext:
-            runAsUser: 1000
-            runAsGroup: 1000
-            fsGroup: 1000
+            runAsUser: 911
+            runAsGroup: 1001
+            fsGroup: 1001
             fsGroupChangePolicy: OnRootMismatch
         containers:
           main:
@@ -47,8 +47,8 @@ spec:
               repository: rogerfar/rdtclient
               tag: latest
             env:
-              PUID: 1000
-              GUID: 1000
+              PUID: 911
+              GUID: 1001
               TZ: "Europe/Madrid"
             resources:
               requests:

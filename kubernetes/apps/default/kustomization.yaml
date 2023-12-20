@@ -8,4 +8,4 @@ resources:
 - ./sonarr/ks.yaml
 - ./jackett/ks.yaml
 - ./flood/ks.yaml
-- ./rdt-client/ks.yaml
+# - ./rdt-client/ks.yaml
