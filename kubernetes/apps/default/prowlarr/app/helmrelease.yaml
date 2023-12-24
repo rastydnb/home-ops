@@ -1,0 +1,96 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/helmrelease-helm-v2beta1.json
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: &app prowlarr
+  namespace: default
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: app-template
+      version: 2.4.0
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  maxHistory: 2
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    controllers:
+      main:
+        annotations:
+          reloader.stakater.com/auto: "true"
+        initContainers:
+          init-db:
+            image:
+              repository: ghcr.io/auricom/postgres-init
+              tag: 15.5@sha256:9b1b80d8101d3f1c73ef13b90dff2ab3bc855bd79ebcd334cba57db391ce6db0
+              pullPolicy: IfNotPresent
+            envFrom: &envFrom
+            - secretRef:
+                name: prowlarr-secret
+        containers:
+          main:
+            image:
+              repository: ghcr.io/onedr0p/prowlarr-nightly
+              tag: 1.11.3.4163@sha256:432b7d04d27ea84d3ab8ec4477bb4879a2bab22baaac0f02416df4ae354abe1d
+            env:
+              TZ: "${TIMEZONE}"
+              PROWLARR__INSTANCE_NAME: Prowlarr
+              PROWLARR__PORT: &port 8080
+              PROWLARR__LOG_LEVEL: info
+              PROWLARR__AUTHENTICATION_METHOD: External
+              PROWLARR__THEME: dark
+            envFrom: *envFrom
+            resources:
+              requests:
+                cpu: 100m
+                memory: 100Mi
+              limits:
+                memory: 500Mi
+    service:
+      main:
+        ports:
+          http:
+            port: *port
+    ingress:
+      main:
+        enabled: true
+        className: "nginx"
+        annotations:
+          external-dns.alpha.kubernetes.io/cloudflare-proxied: "false"
+          external-dns.home.arpa/enabled: "true"
+          external-dns.alpha.kubernetes.io/target: "${METALLB_INGRESS_ADDR}"
+          cert-manager.io/cluster-issuer: letsencrypt-production
+          traefik.ingress.kubernetes.io/router.entrypoints: websecure
+          hajimari.io/enable: "true"
+        hosts:
+        - host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
+          paths:
+          - path: /
+            service:
+              name: main
+              port: http
+        tls:
+        - hosts:
+          - *host
+    persistence:
+      config:
+        enabled: true
+        existingClaim: data-pvc
+        advancedMounts:
+          main:
+            main:
+            - path: /config
+              subPath: prowlarr
+              readOnly: false
