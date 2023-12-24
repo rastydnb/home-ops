@@ -76,6 +76,7 @@ spec:
         tls:
         - hosts:
           - *host
+          secretName: *host
     persistence:
       config:
         enabled: true
