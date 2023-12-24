@@ -57,7 +57,8 @@ spec:
     ingress:
       main:
         enabled: true
-        className: "nginx"
+        primary: true
+        className: traefik
         annotations:
           external-dns.alpha.kubernetes.io/cloudflare-proxied: "false"
           external-dns.home.arpa/enabled: "true"
