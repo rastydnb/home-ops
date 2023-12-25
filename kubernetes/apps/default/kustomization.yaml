@@ -9,4 +9,5 @@ resources:
 - ./jackett/ks.yaml
 - ./flood/ks.yaml
 - ./prowlarr/ks.yaml
+- ./flaresolverr/ks.yaml
 # - ./rdt-client/ks.yaml
