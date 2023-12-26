@@ -28,6 +28,15 @@ spec:
     namespace: default
   values:
     defaultPodOptions:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.io/hostname
+                operator: In
+                values:
+                - slave4
       dnsConfig:
         options:
         - name: ndots

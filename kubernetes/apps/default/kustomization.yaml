@@ -10,4 +10,4 @@ resources:
 - ./flood/ks.yaml
 - ./prowlarr/ks.yaml
 # - ./flaresolverr/ks.yaml
-# - ./rdt-client/ks.yaml
+- ./rdt-client/ks.yaml
