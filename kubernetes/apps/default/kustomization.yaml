@@ -3,11 +3,11 @@ kind: Kustomization
 resources:
 - ./namespace.yaml
 - ./hajimari/ks.yaml
-# - ./qbittorrent/ks.yaml
-# - ./radarr/ks.yaml
-# - ./sonarr/ks.yaml
-# - ./jackett/ks.yaml
-# - ./flood/ks.yaml
-# - ./prowlarr/ks.yaml
-# # - ./flaresolverr/ks.yaml
-# - ./rdt-client/ks.yaml
+- ./qbittorrent/ks.yaml
+- ./radarr/ks.yaml
+- ./sonarr/ks.yaml
+- ./jackett/ks.yaml
+- ./flood/ks.yaml
+- ./prowlarr/ks.yaml
+# - ./flaresolverr/ks.yaml
+- ./rdt-client/ks.yaml
