@@ -27,6 +27,16 @@ spec:
   - name: nfs-subdir-external-provisioner
     namespace: kube-system
   values:
+    defaultPodOptions:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.io/hostname
+                operator: In
+                values:
+                - slave1
     controllers:
       main:
         annotations:
