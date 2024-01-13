@@ -114,7 +114,7 @@ spec:
             - path: /data/downloads/movies
               subPath: downloads/movies
               readOnly: false
-            - path: /data/downloads/series
+            - path: /data/downloads/tv-sonarr
               subPath: downloads/series
               readOnly: false
 
