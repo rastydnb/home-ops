@@ -108,4 +108,4 @@ spec:
         - path: /tv
           subPath: series
         - path: /downloads/series
-          subPath: series
+          subPath: downloads/series
