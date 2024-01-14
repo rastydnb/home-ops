@@ -40,7 +40,9 @@ spec:
             image:
               repository: ghcr.io/onedr0p/radarr
               tag: 5.1.3.8246
-            env: DOCKER_MODS=ghcr.io/themepark-dev/theme.park:radarr
+            env:
+            - DOCKER_MODS=ghcr.io/themepark-dev/theme.park:radarr
+            - TP_ADDON=radarr-4k-logo
             resources:
               requests:
                 cpu: 15m
