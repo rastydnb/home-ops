@@ -23,27 +23,25 @@ spec:
       retries: 3
   uninstall:
     keepHistory: false
-  dependsOn:
-  - name: qbittorrent
-    namespace: default
+  # dependsOn:
+  # - name: qbittorrent
+  #   namespace: default
   values:
     controllers:
       main:
-        pod:
-          securityContext:
-            runAsUser: 568
-            runAsGroup: 568
-            fsGroup: 568
-            fsGroupChangePolicy: OnRootMismatch
         containers:
           main:
             image:
-              repository: ghcr.io/onedr0p/radarr
-              tag: 5.1.3.8246
-            # env:
-            # - DOCKER_MODS=ghcr.io/themepark-dev/theme.park:radarr
-            # - TP_ADDON=radarr-4k-logo
-            # - TP_THEME=aquamarine
+              repository: lscr.io/linuxserver/radarr
+              tag: latest
+            env:
+              DOCKER_MODS: "ghcr.io/themepark-dev/theme.park:radarr"
+              TP_ADDON: "radarr-4k-logo"
+              TP_THEME: "aquamarine"
+              TZ: "Europe/Madrid"
+              PUID: "1000"
+              PGID: "1000"
+              UMASK: "002"
             resources:
               requests:
                 cpu: 15m
