@@ -40,11 +40,6 @@ spec:
             image:
               repository: ghcr.io/hotio/whisparr
               tag: latest
-            env:
-              TZ: "Europe/Madrid"
-              PUID: 1000
-              PGID: 1000
-              UMASK: 002
             resources:
               requests:
                 cpu: 15m
