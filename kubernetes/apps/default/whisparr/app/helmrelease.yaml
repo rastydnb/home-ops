@@ -40,6 +40,7 @@ spec:
             image:
               repository: ghcr.io/hotio/whisparr
               tag: latest
+
             resources:
               requests:
                 cpu: 15m
