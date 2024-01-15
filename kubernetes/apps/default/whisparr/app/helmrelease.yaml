@@ -30,16 +30,21 @@ spec:
     controllers:
       main:
         pod:
-          securityContext:
-            runAsUser: 568
-            runAsGroup: 568
-            fsGroup: 568
-            fsGroupChangePolicy: OnRootMismatch
+        # securityContext:
+        #   runAsUser: 568
+        #   runAsGroup: 568
+        #   fsGroup: 568
+        #   fsGroupChangePolicy: OnRootMismatch
         containers:
           main:
             image:
               repository: ghcr.io/hotio/whisparr
               tag: latest
+            env:
+              TZ: "Europe/Madrid"
+              PUID: 1000
+              PGID: 1000
+              UMASK: 002
             resources:
               requests:
                 cpu: 15m
@@ -105,5 +110,5 @@ spec:
         globalMounts:
         # - path: /movies
         #   subPath: pelis2
-        - path: /data
+        - path: /media
           subPath: downloads/movies2
