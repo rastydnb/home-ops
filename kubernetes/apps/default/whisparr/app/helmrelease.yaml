@@ -46,6 +46,19 @@ spec:
                 memory: 352Mi
               limits:
                 memory: 2Gi
+        initContainers:
+          init-permission:
+            image:
+              repository: ghcr.io/cbc02009/busybox
+              tag: 1.36.1
+            imagePullPolicy: IfNotPresent
+            command:
+            - sh
+            - -c
+            args:
+            - chown -R 568:568 /movies; chown -R 568:568 /downloads
+            securityContext:
+              runAsUser: 0
     service:
       main:
         ports:
@@ -91,6 +104,6 @@ spec:
         readOnly: false
         globalMounts:
         - path: /movies
-          subPath: pelis
+          subPath: pelis2
         - path: /downloads/movies
-          subPath: downloads/movies
+          subPath: downloads/movies2
