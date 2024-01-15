@@ -33,12 +33,11 @@ spec:
           main:
             image:
               repository: ghcr.io/hotio/whisparr
-              tag: latest
+              tag: nightly-6a44c0d
 
             env:
-              DOCKER_MODS: "ghcr.io/themepark-dev/theme.park:whisparr"
-              TP_ADDON: "radarr-4k-logo"
-              TP_THEME: "aquamarine"
+              TP_HOTIO: true
+              TP_THEME: aquamarine
               TZ: "Europe/Madrid"
               PUID: "1000"
               PGID: "1000"
