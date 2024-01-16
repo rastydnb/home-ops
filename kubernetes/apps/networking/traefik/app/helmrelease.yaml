@@ -38,8 +38,6 @@ spec:
         envFrom:
         - secretRef:
             name: nordvpn-config
-        ports:
-        - containerPort: 8080
         securityContext:
           capabilities:
             add: ["NET_ADMIN"]
