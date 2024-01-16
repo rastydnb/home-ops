@@ -85,7 +85,7 @@ spec:
             pathType: Prefix
             service:
               name: main
-              port: 9999
+              port: http
         tls:
         - hosts:
           - *host
@@ -109,4 +109,4 @@ spec:
         existingClaim: usb-media-pvc
         readOnly: false
         globalMounts:
-        - path: /media
+        - path: /media/Organized
