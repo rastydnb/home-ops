@@ -7,11 +7,11 @@ spec:
   interval: 30m
   chart:
     spec:
-      chart: stash
-      version: 3.4.2
+      chart: app-template
+      version: 2.4.0
       sourceRef:
         kind: HelmRepository
-        name: k8s-at-home-charts
+        name: bjw-s
         namespace: flux-system
 
   maxHistory: 3
@@ -30,37 +30,39 @@ spec:
     keepHistory: false
 
   values:
-    image:
-      # -- image repository
-      repository: stashapp/stash
-      # -- image tag
-      tag: latest@sha256:24dbd76071745be0c4e75f730aa7ac2b37cb2b2918eabf8559643196b3b7a64a
-      # -- image pull policy
-      pullPolicy: IfNotPresent
-    resources:
-      requests:
-        cpu: 2m
-        memory: 352Mi
-      limits:
-        memory: 2Gi
-    env:
-      TZ: "${TZ}"
-      STASH_STASH: /media/Organized
-      STASH_GENERATED: /generated/
-      STASH_METADATA: /metadata/
-      STASH_CACHE: /cache/
-      STASH_EXTERNAL_HOST: "{{ .Release.Name }}.${SECRET_DOMAIN}"
+    controllers:
+      main:
+        type: statefulset
+        containers:
+          main:
+            image:
+              repository: stashapp/stash
+              tag: v0.24.3@sha256:9ba5be09e52a91d7d4387dfd7367f1d6524981e4cf8fcb95101ac28110aa4310
+              pullPolicy: IfNotPresent
+            resources:
+              requests:
+                cpu: 2m
+                memory: 352Mi
+              limits:
+                memory: 2Gi
+            env:
+              TZ: "${TZ}"
+              STASH_STASH: /media/Organized
+              STASH_GENERATED: /generated/
+              STASH_METADATA: /metadata/
+              STASH_CACHE: /cache/
+              STASH_EXTERNAL_HOST: "{{ .Release.Name }}.${SECRET_DOMAIN}"
 
-    probes:
-      liveness:
-        spec:
-          timeoutSeconds: 3
-      readiness:
-        spec:
-          timeoutSeconds: 3
-      startup:
-        spec:
-          timeoutSeconds: 3
+            probes:
+              liveness:
+                spec:
+                  timeoutSeconds: 3
+              readiness:
+                spec:
+                  timeoutSeconds: 3
+              startup:
+                spec:
+                  timeoutSeconds: 3
 
     service:
       main:
@@ -110,4 +112,26 @@ spec:
         existingClaim: usb-media-pvc
         readOnly: false
         globalMounts:
-        - path: /media
+        - path: /volume1/DataR/Misc
+
+      # generated:
+      #   enabled: true
+      #   existingClaim: media-pvc
+      #   readOnly: false
+      #   globalMounts:
+      #   - path: /generated
+      #     subPath: stashapp/generated
+      # metadata:
+      #   enabled: true
+      #   existingClaim: media-pvc
+      #   readOnly: false
+      #   globalMounts:
+      #   - path: /metadata
+      #     subPath: stashapp/metadata
+      # cache:
+      #   enabled: true
+      #   existingClaim: media-pvc
+      #   readOnly: false
+      #   globalMounts:
+      #   - path: /cache
+      #     subPath: stashapp/cache
