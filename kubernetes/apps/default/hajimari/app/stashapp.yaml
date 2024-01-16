@@ -46,9 +46,9 @@ spec:
       env:
         TZ: "${TZ}"
         STASH_STASH: /media/Organized
-        STASH_GENERATED: /generated/
-        STASH_METADATA: /metadata/
-        STASH_CACHE: /cache/
+        STASH_GENERATED: /root/.stash/generated/
+        STASH_METADATA: /root/.stash/metadata/
+        STASH_CACHE: /root/.stash/cache/
         # STASH_EXTERNAL_HOST: "{{ .Release.Name }}.${SECRET_DOMAIN}"
 
       probes:
@@ -85,19 +85,8 @@ spec:
       config:
         enabled: true
         existingClaim: data-pvc
-        readOnly: false
-        globalMounts:
-        - path: /root/.stash
-          subPath: stashapp
-        - path: /generated
-          subPath: stashapp/generated
-        - path: /metadata
-          subPath: stashapp/metadata
-        - path: /cache
-          subPath: stashapp/cache
+        mountPath: /root/.stash
       media:
         enabled: true
         existingClaim: usb-media-pvc
-        readOnly: false
-        globalMounts:
-        - path: /media/Organized
+        mountPath: /media/Organized
