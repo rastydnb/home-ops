@@ -86,6 +86,7 @@ spec:
         enabled: true
         existingClaim: data-pvc
         mountPath: /root/.stash
+        subPath: stashapp
       media:
         enabled: true
         existingClaim: usb-media-pvc
