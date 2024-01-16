@@ -32,7 +32,17 @@ spec:
     deployment:
       enabled: true
       replicas: 2
-
+      additionalContainers:
+      - name: nordvpn
+        image: ghcr.io/bubuntux/nordvpn
+        envFrom:
+        - secretRef:
+            name: nordvpn-config
+        ports:
+        - containerPort: 8080
+        securityContext:
+          capabilities:
+            add: ["NET_ADMIN", "NET_RAW"]
     ingressClass:
       enabled: true
       isDefaultClass: true
