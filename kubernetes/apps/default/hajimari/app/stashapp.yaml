@@ -61,13 +61,8 @@ spec:
 
     service:
       main:
-        ports:
-          http:
-            enabled: false
-          https:
-            enabled: true
-            port: 9999
-            protocol: TCP
+        https:
+          port: 9999
 
     ingress:
       main:
