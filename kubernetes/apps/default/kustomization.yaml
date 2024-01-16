@@ -12,4 +12,4 @@ resources:
 # - ./flaresolverr/ks.yaml
 - ./rdt-client/ks.yaml
 - ./whisparr/ks.yaml
-- ./jdownloader2/ks.yaml
+# - ./jdownloader2/ks.yaml
