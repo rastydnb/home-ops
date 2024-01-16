@@ -89,7 +89,5 @@ spec:
         existingClaim: media-pvc
         readOnly: false
         globalMounts:
-        - path: /movies
-          subPath: pelis
         - path: /output
           subPath: downloads
