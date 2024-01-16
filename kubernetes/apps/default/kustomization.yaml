@@ -6,9 +6,10 @@ resources:
 - ./qbittorrent/ks.yaml
 - ./radarr/ks.yaml
 - ./sonarr/ks.yaml
-- ./jackett/ks.yaml
+- ./jdownloader/ks.yaml
 - ./flood/ks.yaml
 - ./prowlarr/ks.yaml
 # - ./flaresolverr/ks.yaml
 - ./rdt-client/ks.yaml
 - ./whisparr/ks.yaml
+- ./jdownloader/ks.yaml
