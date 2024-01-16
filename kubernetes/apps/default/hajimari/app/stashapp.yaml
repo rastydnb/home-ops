@@ -92,9 +92,16 @@ spec:
       config:
         enabled: true
         existingClaim: data-pvc
+        readOnly: false
         globalMounts:
         - path: /root/.stash
           subPath: stashapp
+        - path: /generated
+          subPath: stashapp/generated
+        - path: /metadata
+          subPath: stashapp/metadata
+        - path: /cache
+          subPath: stashapp/cache
       media:
         enabled: true
         existingClaim: media-pvc
