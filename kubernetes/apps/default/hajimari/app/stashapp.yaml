@@ -104,11 +104,11 @@ spec:
           subPath: stashapp/cache
       media:
         enabled: true
-        existingClaim: media-pvc
+        existingClaim: usb-media-pvc
         readOnly: false
         globalMounts:
         - path: /volume1/DataR/Misc
-          subPath: stashapp
+
       # generated:
       #   enabled: true
       #   existingClaim: media-pvc
