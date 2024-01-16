@@ -46,7 +46,7 @@ spec:
               STASH_GENERATED: /generated/
               STASH_METADATA: /metadata/
               STASH_CACHE: /cache/
-              STASH_EXTERNAL_HOST: "https://stash.${XYZ_DOMAIN}"
+              STASH_EXTERNAL_HOST: "{{ .Release.Name }}.${SECRET_DOMAIN}"
 
             probes:
               liveness:
@@ -61,9 +61,9 @@ spec:
 
     service:
       main:
-        https:
-          port: 9999
-
+        ports:
+          http:
+            port: 9999
     ingress:
       main:
         enabled: true
