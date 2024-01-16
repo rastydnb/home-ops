@@ -85,11 +85,11 @@ spec:
             pathType: Prefix
             service:
               name: main
-              port: http
-        # tls:
-        # - hosts:
-        #   - *host
-        #   secretName: *host
+              port: 9999
+        tls:
+        - hosts:
+          - *host
+          secretName: *host
     persistence:
       config:
         enabled: true
