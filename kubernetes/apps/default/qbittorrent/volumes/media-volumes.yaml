@@ -25,3 +25,33 @@ spec:
   resources:
     requests:
       storage: 3500Gi
+
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: usb-media-pv
+spec:
+  storageClassName: nfs-client
+  capacity:
+    storage: 3800Gi
+  accessModes:
+  - ReadWriteMany
+  nfs:
+    server: 192.168.2.51
+    path: /mnt/usbshare1/SpeedDownloads/Ordenado
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: usb-media-pvc
+  namespace: default
+spec:
+  storageClassName: nfs-client
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 3500Gi
