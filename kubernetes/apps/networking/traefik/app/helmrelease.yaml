@@ -32,23 +32,23 @@ spec:
     deployment:
       enabled: true
       replicas: 2
-      additionalContainers:
-      - name: nordvpn
-        image: ghcr.io/bubuntux/nordlynx
-        envFrom:
-        - secretRef:
-            name: nordvpn-config
-        securityContext:
-          capabilities:
-            add: ["NET_ADMIN"]
-      - name: meshnet
-        image: ghcr.io/mattstechinfo/meshnet:v1.0.1
-        securityContext:
-          capabilities:
-            add: ["NET_ADMIN", "NET_RAW"]
-        envFrom:
-        - secretRef:
-            name: nordvpn-config
+      # additionalContainers:
+      # - name: nordvpn
+      #   image: ghcr.io/bubuntux/nordlynx
+      #   envFrom:
+      #   - secretRef:
+      #       name: nordvpn-config
+      #   securityContext:
+      #     capabilities:
+      #       add: ["NET_ADMIN"]
+      # - name: meshnet
+      #   image: ghcr.io/mattstechinfo/meshnet:v1.0.1
+      #   securityContext:
+      #     capabilities:
+      #       add: ["NET_ADMIN", "NET_RAW"]
+      #   envFrom:
+      #   - secretRef:
+      #       name: nordvpn-config
     ingressClass:
       enabled: true
       isDefaultClass: true
