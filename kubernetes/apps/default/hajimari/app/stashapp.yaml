@@ -1,0 +1,131 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: stash
+  namespace: media
+spec:
+  interval: 30m
+  chart:
+    spec:
+      # renovate: registryUrl=https://bjw-s.github.io/helm-charts/
+      chart: app-template
+      version: 2.4.0
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s-charts
+        namespace: flux-system
+
+  maxHistory: 3
+
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+
+  uninstall:
+    keepHistory: false
+
+  values:
+    controllers:
+      main:
+        type: statefulset
+        containers:
+          main:
+            image:
+              repository: stashapp/stash
+              tag: v0.24.3@sha256:9ba5be09e52a91d7d4387dfd7367f1d6524981e4cf8fcb95101ac28110aa4310
+              pullPolicy: IfNotPresent
+
+            env:
+              TZ: "${TZ}"
+              STASH_STASH: /media/Organized
+              STASH_GENERATED: /generated/
+              STASH_METADATA: /metadata/
+              STASH_CACHE: /cache/
+              STASH_EXTERNAL_HOST: "https://stash.${XYZ_DOMAIN}"
+
+            probes:
+              liveness:
+                spec:
+                  timeoutSeconds: 3
+              readiness:
+                spec:
+                  timeoutSeconds: 3
+              startup:
+                spec:
+                  timeoutSeconds: 3
+
+    service:
+      main:
+        ports:
+          http:
+            enabled: false
+          https:
+            enabled: true
+            port: 9999
+            protocol: TCP
+
+    ingress:
+      main:
+        enabled: true
+        primary: true
+        className: traefik
+        annotations:
+          external-dns.alpha.kubernetes.io/cloudflare-proxied: "false"
+          external-dns.home.arpa/enabled: "true"
+          external-dns.alpha.kubernetes.io/target: "${METALLB_INGRESS_ADDR}"
+          cert-manager.io/cluster-issuer: letsencrypt-production
+          traefik.ingress.kubernetes.io/router.entrypoints: websecure
+          hajimari.io/enable: "true"
+        hosts:
+        - host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
+          paths:
+          - path: /
+            pathType: Prefix
+            service:
+              name: main
+              port: http
+        tls:
+        - hosts:
+          - *host
+          secretName: *host
+    persistence:
+      config:
+        enabled: true
+        existingClaim: data-pvc
+        globalMounts:
+        - path: /root/.stash
+          subPath: stashapp
+      media:
+        enabled: true
+        existingClaim: media-pvc
+        readOnly: false
+        globalMounts:
+        - path: /volume1/DataR/Misc
+          subPath: stashapp
+      generated:
+        enabled: true
+        existingClaim: media-pvc
+        readOnly: false
+        globalMounts:
+        - path: /root/.stash/generated
+          subPath: stashapp/generated
+      metadata:
+        enabled: true
+        existingClaim: media-pvc
+        readOnly: false
+        globalMounts:
+        - path: /root/.stash/metadata
+          subPath: stashapp/metadata
+      cache:
+        enabled: true
+        existingClaim: media-pvc
+        readOnly: false
+        globalMounts:
+        - path: /root/.stash/cache
+          subPath: stashapp/cache
