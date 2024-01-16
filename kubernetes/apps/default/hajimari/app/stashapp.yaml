@@ -78,14 +78,14 @@ spec:
           cert-manager.io/cluster-issuer: letsencrypt-production
           traefik.ingress.kubernetes.io/router.entrypoints: websecure
           hajimari.io/enable: "true"
-        # hosts:
-        # - host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
-        #   paths:
-        #   - path: /
-        #     pathType: Prefix
-        #     service:
-        #       name: main
-        #       port: http
+        hosts:
+        - host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
+          paths:
+          - path: /
+            pathType: Prefix
+            service:
+              name: main
+              port: http
         # tls:
         # - hosts:
         #   - *host
