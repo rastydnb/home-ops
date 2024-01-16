@@ -29,13 +29,9 @@ spec:
     remediation:
       retries: 3
   values:
-    securityContext:
-      sysctls:
-      - name: net.ipv6.conf.all.disable_ipv6
-        value: "1"
     deployment:
       enabled: true
-      replicas: 1
+      replicas: 2
       additionalContainers:
       - name: nordvpn
         image: ghcr.io/bubuntux/nordvpn
@@ -46,10 +42,7 @@ spec:
         - containerPort: 8080
         securityContext:
           capabilities:
-            add: ["NET_ADMIN", "NET_RAW"]
-            # sysctls:
-            # - name: net.ipv6.conf.all.disable_ipv6
-            #   value: "1"
+            add: ["NET_ADMIN"]
     ingressClass:
       enabled: true
       isDefaultClass: true
