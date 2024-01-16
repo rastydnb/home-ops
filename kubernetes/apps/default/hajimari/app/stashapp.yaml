@@ -102,24 +102,24 @@ spec:
         globalMounts:
         - path: /volume1/DataR/Misc
           subPath: stashapp
-      generated:
-        enabled: true
-        existingClaim: media-pvc
-        readOnly: false
-        globalMounts:
-        - path: /generated
-          subPath: stashapp/generated
-      metadata:
-        enabled: true
-        existingClaim: media-pvc
-        readOnly: false
-        globalMounts:
-        - path: /metadata
-          subPath: stashapp/metadata
-      cache:
-        enabled: true
-        existingClaim: media-pvc
-        readOnly: false
-        globalMounts:
-        - path: /cache
-          subPath: stashapp/cache
+      # generated:
+      #   enabled: true
+      #   existingClaim: media-pvc
+      #   readOnly: false
+      #   globalMounts:
+      #   - path: /generated
+      #     subPath: stashapp/generated
+      # metadata:
+      #   enabled: true
+      #   existingClaim: media-pvc
+      #   readOnly: false
+      #   globalMounts:
+      #   - path: /metadata
+      #     subPath: stashapp/metadata
+      # cache:
+      #   enabled: true
+      #   existingClaim: media-pvc
+      #   readOnly: false
+      #   globalMounts:
+      #   - path: /cache
+      #     subPath: stashapp/cache
