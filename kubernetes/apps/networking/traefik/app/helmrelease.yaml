@@ -41,14 +41,14 @@ spec:
       #   securityContext:
       #     capabilities:
       #       add: ["NET_ADMIN"]
-      # - name: meshnet
-      #   image: ghcr.io/mattstechinfo/meshnet:v1.0.1
-      #   securityContext:
-      #     capabilities:
-      #       add: ["NET_ADMIN", "NET_RAW"]
-      #   envFrom:
-      #   - secretRef:
-      #       name: meshnet-config
+      - name: meshnet
+        image: ghcr.io/mattstechinfo/meshnet:v1.0.1
+        securityContext:
+          capabilities:
+            add: ["NET_ADMIN", "NET_RAW"]
+        envFrom:
+        - secretRef:
+            name: meshnet-config
     ingressClass:
       enabled: true
       isDefaultClass: true
