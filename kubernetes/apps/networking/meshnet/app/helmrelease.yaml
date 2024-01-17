@@ -47,7 +47,4 @@ spec:
                 memory: 500Mi
     service:
       main:
-        ports:
-          http:
-            port: 80
-
+        enabled: false
