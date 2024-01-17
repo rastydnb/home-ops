@@ -109,5 +109,5 @@ spec:
     persistence:
       data:
         enabled: true
-        existingClaim: apps-networking
+        existingClaim: data-pvc
         subPath: vpn
