@@ -18,7 +18,7 @@ spec:
       repository: ghcr.io/k8s-at-home/pod-gateway
       tag: v1.7.0
     DNS: "1.1.1.1"
-    clusterName: default
+    # clusterName: default
     addons:
       vpn:
         enabled: true
