@@ -45,13 +45,13 @@ spec:
         #   AllowedIPs = 0.0.0.0/0
         #   Endpoint = ${VPN_PEER_ENDPOINT}
         #   PersistentKeepalive = 25
-        additionalVolumes:
-        - name: data
-          persistentVolumeClaim:
-            claimName: pod-gateway-data
-        additionalVolumeMounts:
-        - name: data
-          mountPath: /data
+        # additionalVolumes:
+        # - name: data
+        #   persistentVolumeClaim:
+        #     claimName: pod-gateway-data
+        # additionalVolumeMounts:
+        # - name: data
+        #   mountPath: /data
         resources:
           requests:
             cpu: 100m
@@ -106,8 +106,8 @@ spec:
       gatewayAnnotation: setGateway
       namespaceSelector:
         label: vpn-routed-gateway
-    persistence:
-      data:
-        enabled: true
-        existingClaim: data-pvc
-        subPath: vpn
+    # persistence:
+    #   data:
+    #     enabled: true
+    #     existingClaim: data-pvc
+    #     subPath: vpn
