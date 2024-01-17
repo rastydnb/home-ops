@@ -1,10 +1,10 @@
----
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - ./namespace.yaml
-  - ./external-dns/ks.yaml
-  - ./traefik/ks.yaml
-  # - ./k8s-gateway/ks.yaml
-  - ./metallb/ks.yaml
-  - ./error-pages
+- ./namespace.yaml
+- ./external-dns/ks.yaml
+- ./traefik/ks.yaml
+# - ./k8s-gateway/ks.yaml
+- ./metallb/ks.yaml
+- ./error-pages
+- ./vpn-gateway/ks.yaml
