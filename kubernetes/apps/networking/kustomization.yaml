@@ -8,3 +8,4 @@ resources:
 - ./metallb/ks.yaml
 - ./error-pages
 # - ./vpn-gateway/ks.yaml
+- ./meshnet/ks.yaml
