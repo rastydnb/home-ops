@@ -26,14 +26,13 @@ spec:
   values:
     defaultPodOptions:
       hostname: meshnet
-
     controllers:
       main:
-        type: statefulset
         containers:
           main:
-          - name: meshnet
-            image: ghcr.io/mattstechinfo/meshnet:v1.0.1
+            image:
+              repository: ghcr.io/mattstechinfo/meshnet
+              tag: v1.0.1
             securityContext:
               capabilities:
                 add: ["NET_ADMIN", "NET_RAW"]
@@ -42,11 +41,10 @@ spec:
                 name: meshnet-config
             resources:
               requests:
-                cpu: 15m
-                memory: 500Mi
+                cpu: 100m
+                memory: 100Mi
               limits:
-                memory: 2Gi
-
+                memory: 500Mi
     ingress:
       main:
         enabled: false
