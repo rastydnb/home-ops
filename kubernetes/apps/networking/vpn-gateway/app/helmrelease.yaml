@@ -17,7 +17,7 @@ spec:
     image:
       repository: ghcr.io/k8s-at-home/pod-gateway
       tag: v1.7.0
-    # DNS: "1.1.1.1"
+    DNS: "1.1.1.1"
     # clusterName: default
     addons:
       vpn:
@@ -30,9 +30,9 @@ spec:
           securityContext:
             capabilities:
               add: ["NET_ADMIN", "NET_RAW"]
-        env:
-          IPTABLES_BACKEND: nft
-          KILLSWITCH: "false"
+        # env:
+        #   IPTABLES_BACKEND: nft
+        #   KILLSWITCH: "false"
         envFrom:
         - secretRef:
             name: nordvpn-config
