@@ -7,6 +7,6 @@ resources:
 #- tls-store
 - dashboard
 - middlewares
-- ./pvc.yaml
+# - ./pvc.yaml
 # - volumes
 
