@@ -75,6 +75,12 @@ spec:
       tls: true
       host: "longhorn.ninjawombat.space"
 
+    csi:
+      attacherReplicaCount: 1
+      provisionerReplicaCount: 1
+      resizerReplicaCount: 1
+      snapshotterReplicaCount: 1
+
 
 
 # apiVersion: helm.toolkit.fluxcd.io/v2beta1
