@@ -54,6 +54,7 @@ spec:
         external-dns.home.arpa/enabled: "true"
         external-dns.alpha.kubernetes.io/cloudflare-proxied: "false"
         traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        hajimari.io/enable: "true"
       ingressClassName: "traefik"
       tls: true
       host: "longhorn.ninjawombat.space"
