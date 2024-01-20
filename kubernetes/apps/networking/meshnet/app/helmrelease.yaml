@@ -45,6 +45,18 @@ spec:
                 memory: 100Mi
               limits:
                 memory: 500Mi
+          vpn:
+            image:
+              repository: ghcr.io/bubuntux/nordlynx
+              tag: latest
+            securityContext:
+              capabilities:
+              add:
+              - NET_ADMIN
+              - SYS_ADMIN
+            envFrom:
+            - secretRef:
+                name: nordvpn-config
     service:
       main:
         enabled: false
