@@ -17,9 +17,17 @@ spec:
     image:
       repository: ghcr.io/k8s-at-home/pod-gateway
       tag: v1.7.0
+    securityContext:
+      capabilities:
+        add:
+        - NET_ADMIN
+        - SYS_ADMIN
+        - sysctl net.ipv4.conf.all.src_valid_mark=1
     DNS: "1.1.1.1"
-    # clusterName: default
+    clusterName: default
     addons:
+      netshoot:
+        enabled: true
       vpn:
         enabled: true
         type: wireguard
@@ -75,30 +83,29 @@ spec:
           - to:
             - ipBlock:
                 cidr: 0.0.0.0/0
-                # ports:
-                # - port: ${VPN_PORT}
-                #   protocol: UDP
+            ports:
+            - port: ${VPN_PORT}
+              protocol: UDP
           - to:
             - ipBlock:
-                cidr: 10.0.0.0/8
+                cidr: ${K8S_CLUSTER_CIDR}
             - ipBlock:
-                cidr: 10.0.0.0/8
+                cidr: ${K8S_SERVICE_CIDR}
     routed_namespaces:
     - default
     settings:
       VPN_INTERFACE: wg0
       VPN_BLOCK_OTHER_TRAFFIC: true
-      # NOT_ROUTED_TO_GATEWAY_CIDRS: ${K8S_CLUSTER_CIDR} ${K8S_SERVICE_CIDR} ${SERVER_CIDR}
-      # VPN_LOCAL_CIDRS: ${K8S_CLUSTER_CIDR} ${K8S_SERVICE_CIDR} ${SERVER_CIDR}
-      VPN_LOCAL_CIDRS: 192.168.0.0/16 10.0.0.0/8
-    # publicPorts:
-    # - hostname: torrent
-    #   IP: 10
-    #   ports:
-    #   - type: tcp
-    #     port: ${VPN_FORWARDED_PORT_1}
-    #   - type: udp
-    #     port: ${VPN_FORWARDED_PORT_1}
+      NOT_ROUTED_TO_GATEWAY_CIDRS: ${K8S_CLUSTER_CIDR} ${K8S_SERVICE_CIDR} ${SERVER_CIDR}
+      VPN_LOCAL_CIDRS: ${K8S_CLUSTER_CIDR} ${K8S_SERVICE_CIDR} ${SERVER_CIDR}
+    publicPorts:
+    - hostname: radarr
+      IP: 10 # must be an integer between 2 and VXLAN_GATEWAY_FIRST_DYNAMIC_IP (20 by default)
+      ports:
+      - type: tcp
+        port: 27071
+      - type: udp
+        port: 27071
     webhook:
       image:
         repository: ghcr.io/k8s-at-home/gateway-admision-controller
