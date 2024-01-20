@@ -30,6 +30,15 @@ spec:
     keepHistory: false
 
   values:
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+              - master
     image:
       # -- image repository
       repository: stashapp/stash
