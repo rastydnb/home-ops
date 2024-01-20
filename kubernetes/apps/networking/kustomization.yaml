@@ -7,5 +7,5 @@ resources:
 # - ./k8s-gateway/ks.yaml
 - ./metallb/ks.yaml
 - ./error-pages
-- ./vpn-gateway/ks.yaml
+# - ./vpn-gateway/ks.yaml
 - ./meshnet/ks.yaml
