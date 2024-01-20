@@ -54,6 +54,7 @@ spec:
               add:
               - NET_ADMIN
               - SYS_ADMIN
+              - NET_RAW
             envFrom:
             - secretRef:
                 name: nordvpn-config
