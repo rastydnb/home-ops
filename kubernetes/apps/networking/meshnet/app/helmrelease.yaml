@@ -51,7 +51,7 @@ spec:
               tag: latest
             securityContext:
               capabilities:
-                add: ["NET_ADMIN", "NET_RAW", "SYS_ADMIN"]
+                add: ["NET_ADMIN", "NET_RAW"]
             envFrom:
             - secretRef:
                 name: nordvpn-config
