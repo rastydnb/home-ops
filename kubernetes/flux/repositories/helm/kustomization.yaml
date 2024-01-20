@@ -21,3 +21,4 @@ resources:
 - ./k8s-at-home-charts.yaml
 - ./flood.yaml
 - ./longhorn.yaml
+- ./angelnu-helm-charts.yaml
