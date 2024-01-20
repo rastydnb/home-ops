@@ -5,8 +5,8 @@ resources:
 - ./helmrelease.yaml
 # - ./rbac.yaml
 #- tls-store
-# - dashboard
-# - middlewares
+- dashboard
+- middlewares
 # - ./pvc.yaml
 # - volumes
 
