@@ -19,9 +19,7 @@ spec:
       tag: v1.7.0
     securityContext:
       capabilities:
-        add:
-        - NET_ADMIN
-        - NET_RAW
+        add: ["NET_ADMIN", "NET_RAW"]
     DNS: "1.1.1.1"
     clusterName: default
     addons:
