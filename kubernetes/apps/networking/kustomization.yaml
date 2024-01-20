@@ -6,6 +6,6 @@ resources:
 - ./traefik/ks.yaml
 # - ./k8s-gateway/ks.yaml
 - ./metallb/ks.yaml
-- ./error-pages
+# - ./error-pages
 # - ./vpn-gateway/ks.yaml
 - ./meshnet/ks.yaml
