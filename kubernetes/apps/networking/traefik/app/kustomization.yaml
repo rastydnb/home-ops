@@ -6,7 +6,7 @@ resources:
 # - ./rbac.yaml
 #- tls-store
 # - dashboard
-- middlewares
+# - middlewares
 # - ./pvc.yaml
 # - volumes
 
