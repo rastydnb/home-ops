@@ -22,7 +22,7 @@ spec:
         add:
         - NET_ADMIN
         - SYS_ADMIN
-        # - sysctl net.ipv4.conf.all.src_valid_mark=1
+        - sysctl net.ipv4.conf.all.src_valid_mark=1
     # DNS: "1.1.1.1"
     clusterName: default
     addons:
@@ -37,7 +37,7 @@ spec:
             tag: latest
           securityContext:
             capabilities:
-              add: ["NET_ADMIN", "NET_RAW", "SYS_ADMIN"]
+              add: ["NET_ADMIN", "NET_RAW", "SYS_ADMIN", "sysctl net.ipv4.conf.all.src_valid_mark=1"]
               # - sysctl net.ipv4.conf.all.src_valid_mark=1
         # env:
         #   IPTABLES_BACKEND: nft
