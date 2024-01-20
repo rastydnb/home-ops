@@ -23,7 +23,7 @@ spec:
         - NET_ADMIN
         - SYS_ADMIN
         # - sysctl net.ipv4.conf.all.src_valid_mark=1
-    DNS: "1.1.1.1"
+    # DNS: "1.1.1.1"
     clusterName: default
     addons:
       netshoot:
