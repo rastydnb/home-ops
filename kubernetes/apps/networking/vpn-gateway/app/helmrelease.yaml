@@ -96,12 +96,34 @@ spec:
             - ipBlock:
                 cidr: 0.0.0.0/0
             ports:
-            # VPN traffic
             - port: &vpn_port 1194
               protocol: UDP
+            - port: *vpn_port
+              protocol: TCP
+            - port: 53
+              protocol: UDP
           - to:
+            # Allow traffic within K8S - change if your K8S cluster uses a different CIDR
             - ipBlock:
-                cidr: 10.0.0.0/8
+                cidr: ${K8S_CLUSTER_CIDR}
+            - ipBlock:
+                cidr: ${K8S_SERVICE_CIDR}
+            - namespaceSelector: {}
+
+        # networkPolicy:
+        #   enabled: true
+
+        #   egress:
+        #   - to:
+        #     - ipBlock:
+        #         cidr: 0.0.0.0/0
+        #     ports:
+        #     # VPN traffic
+        #     - port: &vpn_port 1194
+        #       protocol: UDP
+        #   - to:
+        #     - ipBlock:
+        #         cidr: 10.0.0.0/8
 
     routed_namespaces:
     - default
