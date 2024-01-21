@@ -65,19 +65,19 @@ spec:
             envFrom:
             - secretRef:
                 name: gluetun-config
-            # env:
-            # - name: VPN_SERVICE_PROVIDER
-            #   value: nordvpn
-            # - name: VPN_TYPE
-            #   value: wireguard
-            # - name: VPN_INTERFACE
-            #   value: wg0
-            # - name: FIREWALL
-            #   value: "off"
-            # - name: DOT
-            #   value: "off"
-            # - name: SERVER_COUNTRIES
-            #   value: Spain
+            env:
+            - name: VPN_SERVICE_PROVIDER
+              value: nordvpn
+            - name: VPN_TYPE
+              value: wireguard
+            - name: VPN_INTERFACE
+              value: wg0
+            - name: FIREWALL
+              value: "off"
+            - name: DOT
+              value: "off"
+            - name: SERVER_COUNTRIES
+              value: Spain
 
             securityContext:
               capabilities:
