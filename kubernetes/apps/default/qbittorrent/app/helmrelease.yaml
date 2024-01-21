@@ -24,11 +24,11 @@ spec:
       retries: 3
   values:
     defaultPodOptions:
-      hostname: true
-      annotations:
-        setGateway: "true"
-      labels:
-        setGateway: "true"
+      # hostname: true
+      # annotations:
+      #   setGateway: "true"
+      # labels:
+      #   setGateway: "true"
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
