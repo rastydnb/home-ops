@@ -49,6 +49,7 @@ spec:
             image:
               repository: docker.io/qmcgaw/gluetun
               tag: latest
+              pullPolicy: Always
             securityContext:
               capabilities:
                 add: ["NET_ADMIN", "NET_RAW"]
