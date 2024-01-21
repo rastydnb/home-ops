@@ -75,7 +75,7 @@ spec:
             - name: FIREWALL
               value: "off"
             - name: DOT
-              value: "off"
+              value: "on"
             - name: SERVER_COUNTRIES
               value: Spain
 
@@ -83,16 +83,6 @@ spec:
               capabilities:
                 add:
                 - NET_ADMIN
-
-            livenessProbe:
-              exec:
-                command:
-                - sh
-                - -c
-                - if [ $(wget -q -O- https://ipinfo.io/country) == 'ES' ]; then exit 0; else exit $?; fi
-              initialDelaySeconds: 30
-              periodSeconds: 60
-              failureThreshold: 3
 
           port-forward:
             dependsOn: gluetun
