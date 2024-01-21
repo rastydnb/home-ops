@@ -67,13 +67,7 @@ spec:
             - name: FIREWALL
               value: "off"
             - name: DOT
-              value: "off"
-            # - name:  WIREGUARD_PRIVATE_KEY
-            #   value: set in secret
-            # - name:  WIREGUARD_PRESHARED_KEY
-            #   value: set in secret
-            # - name:  WIREGUARD_ADDRESSES
-            #   value: set in secret
+              value: "on"
             - name: SERVER_COUNTRIES
               value: Spain
 
