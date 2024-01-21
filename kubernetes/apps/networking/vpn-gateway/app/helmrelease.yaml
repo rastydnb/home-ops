@@ -29,18 +29,15 @@ spec:
         # Use dev version
         pullPolicy: Always
         tag: latest
+
+      gatewayDefault: true
+      gatewayLabel: setGateway
+      gatewayAnnotation: setGateway
+      namespaceSelector:
+        label: "routed-gateway"
+
     addons:
       vpn:
-        # enabled: true
-        # type: wireguard
-        # wireguard:
-        #   image:
-        #     repository: ghcr.io/bubuntux/nordlynx
-        #     tag: latest
-        # envFrom:
-        # - secretRef:
-        #     name: nordvpn-config
-
         enabled: true
         type: gluetun
         gluetun:
@@ -103,21 +100,6 @@ spec:
             - ipBlock:
                 cidr: ${K8S_SERVICE_CIDR}
             - namespaceSelector: {}
-
-        # networkPolicy:
-        #   enabled: true
-
-        #   egress:
-        #   - to:
-        #     - ipBlock:
-        #         cidr: 0.0.0.0/0
-        #     ports:
-        #     # VPN traffic
-        #     - port: &vpn_port 1194
-        #       protocol: UDP
-        #   - to:
-        #     - ipBlock:
-        #         cidr: 10.0.0.0/8
 
     routed_namespaces:
     - default
