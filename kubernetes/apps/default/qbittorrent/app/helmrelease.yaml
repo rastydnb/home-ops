@@ -25,10 +25,10 @@ spec:
   values:
     defaultPodOptions:
       hostname: qbittorrent
-      # annotations:
-      #   setGateway: "true"
-      # labels:
-      #   setGateway: "true"
+      annotations:
+        setGateway: "true"
+      labels:
+        setGateway: "true"
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
