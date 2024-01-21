@@ -49,42 +49,42 @@ spec:
             image:
               repository: docker.io/qmcgaw/gluetun
               tag: latest@sha256:1b6962746d67d33b7a0791f648c8789bec181179d50005dcc80599877cad52e3
-          securityContext:
-            capabilities:
-              add: ["NET_ADMIN", "NET_RAW"]
+            securityContext:
+              capabilities:
+                add: ["NET_ADMIN", "NET_RAW"]
 
-          envFrom:
-          - secretRef:
-              name: gluetun-config
-          env:
-          - name: VPN_SERVICE_PROVIDER
-            value: nordvpn
-          - name: VPN_TYPE
-            value: wireguard
-          - name: VPN_INTERFACE
-            value: wg0
-          - name: FIREWALL
-            value: "off"
-          - name: DOT
-            value: "off"
-          # - name:  WIREGUARD_PRIVATE_KEY
-          #   value: set in secret
-          # - name:  WIREGUARD_PRESHARED_KEY
-          #   value: set in secret
-          # - name:  WIREGUARD_ADDRESSES
-          #   value: set in secret
-          - name: SERVER_COUNTRIES
-            value: Spain
+            envFrom:
+            - secretRef:
+                name: gluetun-config
+            env:
+            - name: VPN_SERVICE_PROVIDER
+              value: nordvpn
+            - name: VPN_TYPE
+              value: wireguard
+            - name: VPN_INTERFACE
+              value: wg0
+            - name: FIREWALL
+              value: "off"
+            - name: DOT
+              value: "off"
+            # - name:  WIREGUARD_PRIVATE_KEY
+            #   value: set in secret
+            # - name:  WIREGUARD_PRESHARED_KEY
+            #   value: set in secret
+            # - name:  WIREGUARD_ADDRESSES
+            #   value: set in secret
+            - name: SERVER_COUNTRIES
+              value: Spain
 
-          livenessProbe:
-            exec:
-              command:
-              - sh
-              - -c
-              - if [ $(wget -q -O- https://ipinfo.io/country) == 'ES' ]; then exit 0; else exit $?; fi
-            initialDelaySeconds: 30
-            periodSeconds: 60
-            failureThreshold: 3
+            livenessProbe:
+              exec:
+                command:
+                - sh
+                - -c
+                - if [ $(wget -q -O- https://ipinfo.io/country) == 'ES' ]; then exit 0; else exit $?; fi
+              initialDelaySeconds: 30
+              periodSeconds: 60
+              failureThreshold: 3
 
           # vpn:
           #   image:
