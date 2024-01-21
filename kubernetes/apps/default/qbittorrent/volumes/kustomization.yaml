@@ -4,3 +4,4 @@ namespace: default
 resources:
 - ./media-volumes.yaml
 - ./data-volumes.yaml
+- ./secret.sops.yaml
