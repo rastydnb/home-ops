@@ -67,7 +67,7 @@ spec:
         - name: FIREWALL
           value: "off"
         - name: DOT
-          value: "off"
+          value: "on"
         # - name:  WIREGUARD_PRIVATE_KEY
         #   value: set in secret
         # - name:  WIREGUARD_PRESHARED_KEY
