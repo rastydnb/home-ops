@@ -30,16 +30,15 @@ spec:
         pullPolicy: Always
         tag: dev
     addons:
-      vpn:
-        enabled: true
-        type: wireguard
-        wireguard:
-          image:
-            repository: ghcr.io/bubuntux/nordlynx
-            tag: latest
-        envFrom:
-        - secretRef:
-            name: nordvpn-config
+      enabled: true
+      type: wireguard
+      wireguard:
+        image:
+          repository: ghcr.io/bubuntux/nordlynx
+          tag: latest
+      envFrom:
+      - secretRef:
+          name: nordvpn-config
 
         # enabled: true
         # type: gluetun
