@@ -24,6 +24,7 @@ spec:
       retries: 3
   values:
     defaultPodOptions:
+      hostname: qbittorrent
       annotations:
         setGateway: "true"
       labels:
