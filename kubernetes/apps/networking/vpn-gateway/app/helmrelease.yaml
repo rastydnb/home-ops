@@ -23,6 +23,9 @@ spec:
       repository: ghcr.io/angelnu/pod-gateway
       # I am using dev version for testing - others should be using latest
       tag: dev@sha256:26e89cc1b58999caf3ddbd497834672e311d778a203e37268042f7e3c43429e4
+      securityContext:
+        capabilities:
+          add: ["NET_ADMIN", "NET_RAW"]
     webhook:
       image:
         repository: ghcr.io/angelnu/gateway-admision-controller
@@ -47,6 +50,9 @@ spec:
           image:
             repository: docker.io/qmcgaw/gluetun
             tag: latest@sha256:1b6962746d67d33b7a0791f648c8789bec181179d50005dcc80599877cad52e3
+        securityContext:
+          capabilities:
+            add: ["NET_ADMIN", "NET_RAW"]
 
         envFrom:
         - secretRef:
