@@ -56,6 +56,16 @@ spec:
             securityContext:
               runAsUser: 568
               runAsGroup: 568
+          vpn:
+            image:
+              repository: ghcr.io/bubuntux/nordlynx
+              tag: latest
+            securityContext:
+              capabilities:
+                add: ["NET_ADMIN", "NET_RAW"]
+            envFrom:
+            - secretRef:
+                name: nordvpn-config
     service:
       main:
         ports:
