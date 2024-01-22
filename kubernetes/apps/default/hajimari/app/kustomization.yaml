@@ -3,4 +3,4 @@ kind: Kustomization
 namespace: default
 resources:
 - ./helmrelease.yaml
-- ./stashapp.yaml
+# - ./stashapp.yaml
