@@ -91,6 +91,6 @@ spec:
         envFrom:
         - secretRef:
             name: nordvpn-config
-service:
-  main:
-    enabled: false
+    service:
+      main:
+        enabled: false
