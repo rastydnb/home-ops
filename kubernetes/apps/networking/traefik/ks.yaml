@@ -1,7 +1,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: cluster-apps-ingress-traefik-tools
+  name: cluster-apps-ingress-traefik
   namespace: flux-system
   labels:
     substitution.flux.home.arpa/enabled: "true"
@@ -11,7 +11,7 @@ spec:
   - name: cluster-apps-cert-manager-issuers
   - name: cluster-apps-metallb
   - name: cluster-apps-metallb-config
-  path: ./kubernetes/apps/networking/traefik/tools
+  path: ./kubernetes/apps/networking/traefik/app
   prune: true
   sourceRef:
     kind: GitRepository
@@ -25,10 +25,11 @@ spec:
   retryInterval: 1m
   timeout: 1m
 ---
+
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: cluster-apps-ingress-traefik
+  name: cluster-apps-ingress-traefik-tools
   namespace: flux-system
   labels:
     substitution.flux.home.arpa/enabled: "true"
@@ -38,8 +39,8 @@ spec:
   - name: cluster-apps-cert-manager-issuers
   - name: cluster-apps-metallb
   - name: cluster-apps-metallb-config
-  - name: cluster-apps-ingress-traefik-tools
-  path: ./kubernetes/apps/networking/traefik/app
+  - name: cluster-apps-ingress-traefik
+  path: ./kubernetes/apps/networking/traefik/tools
   prune: true
   sourceRef:
     kind: GitRepository
