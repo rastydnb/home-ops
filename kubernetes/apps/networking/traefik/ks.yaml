@@ -11,7 +11,7 @@ spec:
   - name: cluster-apps-cert-manager-issuers
   - name: cluster-apps-metallb
   - name: cluster-apps-metallb-config
-  path: ./kubernetes/apps/networking/tools
+  path: ./kubernetes/apps/networking/traefik/tools
   prune: true
   sourceRef:
     kind: GitRepository
