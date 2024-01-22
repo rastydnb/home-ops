@@ -82,6 +82,7 @@ spec:
                 #     failureThreshold: 3
 
           vpn:
+            dependsOn: main
             image:
               repository: ghcr.io/bubuntux/nordlynx
               tag: latest
