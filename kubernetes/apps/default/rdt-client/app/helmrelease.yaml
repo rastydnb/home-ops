@@ -65,6 +65,31 @@ spec:
                 memory: 500Mi
               limits:
                 memory: 2Gi
+          gluetun:
+            dependsOn: main
+            image:
+              repository: docker.io/qmcgaw/gluetun
+              tag: latest
+              pullPolicy: Always
+            envFrom:
+            - secretRef:
+                name: gluetun-config
+            securityContext:
+              capabilities:
+                add:
+                - NET_ADMIN
+          port-forward:
+            dependsOn: gluetun
+            image:
+              repository: docker.io/snoringdragon/gluetun-qbittorrent-port-manager
+              tag: "latest"
+            env:
+            - name: QBITTORRENT_SERVER
+              value: localhost
+            - name: QBITTORRENT_PORT
+              value: "8080"
+            - name: PORT_FORWARDED
+              value: "/tmp/gluetun/forwarded_port"
     service:
       main:
         ports:
