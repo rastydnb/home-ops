@@ -81,16 +81,16 @@ spec:
                 #     periodSeconds: 60
                 #     failureThreshold: 3
 
-      vpn:
-        image:
-          repository: ghcr.io/bubuntux/nordlynx
-          tag: latest
-        securityContext:
-          capabilities:
-            add: ["NET_ADMIN", "NET_RAW"]
-        envFrom:
-        - secretRef:
-            name: nordvpn-config
+          vpn:
+            image:
+              repository: ghcr.io/bubuntux/nordlynx
+              tag: latest
+            securityContext:
+              capabilities:
+                add: ["NET_ADMIN", "NET_RAW"]
+            envFrom:
+            - secretRef:
+                name: nordvpn-config
     service:
       main:
         enabled: false
