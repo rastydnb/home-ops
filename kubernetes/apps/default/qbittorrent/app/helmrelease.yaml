@@ -61,46 +61,46 @@ spec:
             securityContext:
               runAsUser: 568
               runAsGroup: 568
-              gluetun:
-                dependsOn: main
-                image:
-                  repository: docker.io/qmcgaw/gluetun
-                  tag: latest
-                  pullPolicy: Always
-                envFrom:
-                - secretRef:
-                    name: gluetun-config
-                env:
-                - name: VPN_SERVICE_PROVIDER
-                  value: nordvpn
-                - name: VPN_TYPE
-                  value: wireguard
-                - name: VPN_INTERFACE
-                  value: wg0
-                - name: FIREWALL
-                  value: "off"
-                - name: DOT
-                  value: "on"
-                - name: SERVER_COUNTRIES
-                  value: Spain
+          gluetun:
+            dependsOn: main
+            image:
+              repository: docker.io/qmcgaw/gluetun
+              tag: latest
+              pullPolicy: Always
+            envFrom:
+            - secretRef:
+                name: gluetun-config
+            env:
+            - name: VPN_SERVICE_PROVIDER
+              value: nordvpn
+            - name: VPN_TYPE
+              value: wireguard
+            - name: VPN_INTERFACE
+              value: wg0
+            - name: FIREWALL
+              value: "off"
+            - name: DOT
+              value: "on"
+            - name: SERVER_COUNTRIES
+              value: Spain
 
-                securityContext:
-                  capabilities:
-                    add:
-                    - NET_ADMIN
+            securityContext:
+              capabilities:
+                add:
+                - NET_ADMIN
 
-              port-forward:
-                dependsOn: gluetun
-                image:
-                  repository: docker.io/snoringdragon/gluetun-qbittorrent-port-manager
-                  tag: "latest"
-                env:
-                - name: QBITTORRENT_SERVER
-                  value: localhost
-                - name: QBITTORRENT_PORT
-                  value: "8080"
-                - name: PORT_FORWARDED
-                  value: "/tmp/gluetun/forwarded_port"
+          port-forward:
+            dependsOn: gluetun
+            image:
+              repository: docker.io/snoringdragon/gluetun-qbittorrent-port-manager
+              tag: "latest"
+            env:
+            - name: QBITTORRENT_SERVER
+              value: localhost
+            - name: QBITTORRENT_PORT
+              value: "8080"
+            - name: PORT_FORWARDED
+              value: "/tmp/gluetun/forwarded_port"
 
     service:
       main:
