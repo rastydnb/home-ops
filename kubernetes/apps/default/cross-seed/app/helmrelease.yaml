@@ -34,8 +34,8 @@ spec:
               repository: ghcr.io/cross-seed/cross-seed
               tag: 5.9.2@sha256:6abdca45f0ecfd8d23a3035beefa716a14b66f23c14854631fe369d1ad346f1e
             envFrom:
-              - secretRef:
-                  name: cross-seed
+            - secretRef:
+                name: cross-seed
             env:
               TZ: ${TZ}
             args: ["daemon"]
@@ -95,13 +95,13 @@ spec:
             - path: /config
               subPath: cross-seed
               readOnly: false
-      config-file:
-        type: configMap
-        name: cross-seed-config
-        globalMounts:
-        - path: /config/config.js
-          subPath: config.js
-          readOnly: true
+      # config-file:
+      #   type: configMap
+      #   name: cross-seed-config
+      #   globalMounts:
+      #   - path: /config/config.js
+      #     subPath: config.js
+      #     readOnly: true
       media:
         enabled: true
         existingClaim: media-pvc
