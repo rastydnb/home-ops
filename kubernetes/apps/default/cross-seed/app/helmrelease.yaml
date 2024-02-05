@@ -93,7 +93,7 @@ spec:
           main:
             main:
             - path: /config
-              subPath: cross-seed
+              subPath: qbittorrent
               readOnly: false
       config-file:
         type: configMap
