@@ -13,3 +13,4 @@ resources:
 - ./rdt-client/ks.yaml
 # - ./whisparr/ks.yaml
 - ./jdownloader2/ks.yaml
+- ./cross-seed/ks.yaml
