@@ -11,7 +11,5 @@ configMapGenerator:
   - ./configs/config.js
 generatorOptions:
   disableNameSuffixHash: true
-labels:
-- pairs:
-    app.kubernetes.io/name: qbittorrent
-    app.kubernetes.io/instance: qbittorrent
+  annotations:
+    kustomize.toolkit.fluxcd.io/substitute: disabled
