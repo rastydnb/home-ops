@@ -115,6 +115,14 @@ spec:
           - *host
           secretName: *host
     persistence:
+      completed-script:
+        type: configMap
+        name: qbittorrent-scripts
+        defaultMode: 0775
+        globalMounts:
+          - path: /scripts/completed.sh
+            subPath: completed.sh
+            readOnly: true
       config:
         enabled: true
         existingClaim: data-pvc
