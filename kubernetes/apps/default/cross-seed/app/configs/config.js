@@ -31,7 +31,7 @@ module.exports = {
   skipRecheck: true,
   linkType: "hardlink",
 
-  linkDir: "/media/downloads/qbittorrent/complete/xseeds",
+  linkDir: "/media/xseeds",
 
   // I have sonarr, radarr, and prowlarr categories set in qBittorrent
   // The save paths for them are set to the following:

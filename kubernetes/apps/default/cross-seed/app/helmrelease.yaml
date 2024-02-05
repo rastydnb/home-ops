@@ -114,3 +114,6 @@ spec:
             - path: /media/series
               subPath: downloads/series
               readOnly: false
+            - path: /media/xseeds
+              subPath: downloads/xseeds
+              readOnly: false
