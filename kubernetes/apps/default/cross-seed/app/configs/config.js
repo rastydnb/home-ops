@@ -8,17 +8,18 @@ module.exports = {
   qbittorrentUrl: "http://qbittorrent.default.svc.cluster.local:8080",
 
   torznab: [
-    `http://prowlarr.default.svc.cluster.local:8080/4/api?apikey=${process.env.PROWLARR_API_KEY}`, // at
-    `http://prowlarr.default.svc.cluster.local:8080/16/api?apikey=${process.env.PROWLARR_API_KEY}`, // ant
-    `http://prowlarr.default.svc.cluster.local:8080/2/api?apikey=${process.env.PROWLARR_API_KEY}`, // blu
-    `http://prowlarr.default.svc.cluster.local:8080/1/api?apikey=${process.env.PROWLARR_API_KEY}`, // btn
-    `http://prowlarr.default.svc.cluster.local:8080/12/api?apikey=${process.env.PROWLARR_API_KEY}`, // cz
-    `http://prowlarr.default.svc.cluster.local:8080/3/api?apikey=${process.env.PROWLARR_API_KEY}`, // hdt
-    `http://prowlarr.default.svc.cluster.local:8080/15/api?apikey=${process.env.PROWLARR_API_KEY}`, // ipt
-    `http://prowlarr.default.svc.cluster.local:8080/5/api?apikey=${process.env.PROWLARR_API_KEY}`, // ms
-    `http://prowlarr.default.svc.cluster.local:8080/14/api?apikey=${process.env.PROWLARR_API_KEY}`, // tl
-    `http://prowlarr.default.svc.cluster.local:8080/13/api?apikey=${process.env.PROWLARR_API_KEY}`, // ts
-    `http://prowlarr.default.svc.cluster.local:8080/49/api?apikey=${process.env.PROWLARR_API_KEY}`, // bt
+    `http://jackett:9117/api/v2.0/indexers/divxtotal/results/torznab?apikey=${process.env.JACKETT_API_KEY}`, // at
+    // `http://prowlarr.default.svc.cluster.local:8080/4/api?apikey=${process.env.PROWLARR_API_KEY}`, // at
+    // `http://prowlarr.default.svc.cluster.local:8080/16/api?apikey=${process.env.PROWLARR_API_KEY}`, // ant
+    // `http://prowlarr.default.svc.cluster.local:8080/2/api?apikey=${process.env.PROWLARR_API_KEY}`, // blu
+    // `http://prowlarr.default.svc.cluster.local:8080/1/api?apikey=${process.env.PROWLARR_API_KEY}`, // btn
+    // `http://prowlarr.default.svc.cluster.local:8080/12/api?apikey=${process.env.PROWLARR_API_KEY}`, // cz
+    // `http://prowlarr.default.svc.cluster.local:8080/3/api?apikey=${process.env.PROWLARR_API_KEY}`, // hdt
+    // `http://prowlarr.default.svc.cluster.local:8080/15/api?apikey=${process.env.PROWLARR_API_KEY}`, // ipt
+    // `http://prowlarr.default.svc.cluster.local:8080/5/api?apikey=${process.env.PROWLARR_API_KEY}`, // ms
+    // `http://prowlarr.default.svc.cluster.local:8080/14/api?apikey=${process.env.PROWLARR_API_KEY}`, // tl
+    // `http://prowlarr.default.svc.cluster.local:8080/13/api?apikey=${process.env.PROWLARR_API_KEY}`, // ts
+    // `http://prowlarr.default.svc.cluster.local:8080/49/api?apikey=${process.env.PROWLARR_API_KEY}`, // bt
   ],
 
   action: "inject",
