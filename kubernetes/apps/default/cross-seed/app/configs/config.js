@@ -9,6 +9,8 @@ module.exports = {
 
   torznab: [
     `http://jackett:9117/api/v2.0/indexers/divxtotal/results/torznab/api?apikey=${process.env.JACKETT_API_KEY}`, // at
+    `http://jackett:9117/api/v2.0/indexers/dontorrent/results/torznab/api?apikey=${process.env.JACKETT_API_KEY}`, // at
+    `http://jackett:9117/api/v2.0/indexers/mejortorrent/results/torznab/api?apikey=${process.env.JACKETT_API_KEY}`, // at
     // `http://prowlarr.default.svc.cluster.local:8080/4/api?apikey=${process.env.PROWLARR_API_KEY}`, // at
     // `http://prowlarr.default.svc.cluster.local:8080/16/api?apikey=${process.env.PROWLARR_API_KEY}`, // ant
     // `http://prowlarr.default.svc.cluster.local:8080/2/api?apikey=${process.env.PROWLARR_API_KEY}`, // blu
